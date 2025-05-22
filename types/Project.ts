@@ -3,5 +3,6 @@ export type Project = {
   _createdAt: string;
   name: string;
   slug: string;
-  image: string;
+  firstImage: string;
+  secondImage: string;
 };

@@ -22,8 +22,8 @@ const project = {
       options: { source: "name" },
     }),
     defineField({
-      name: "image",
-      title: "Image",
+      name: "firstImage",
+      title: "First Image",
       type: "image",
       fields: [
         defineField({
@@ -34,8 +34,8 @@ const project = {
       ],
     }),
     defineField({
-      name: "image",
-      title: "Image",
+      name: "secondImage",
+      title: "Second Image",
       type: "image",
       fields: [
         defineField({
