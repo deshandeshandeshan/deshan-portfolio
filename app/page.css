@@ -1,0 +1,67 @@
+.home-page {
+  padding-top: 16px;
+}
+
+.landing-content {
+  height: 100vh;
+}
+
+.home-skills-description {
+  grid-column: 1 / 4;
+  grid-row: 1 / 2;
+}
+
+.about-link {
+  grid-column: 4 / 7;
+  grid-row: 1 / 2;
+}
+
+.home-title {
+  grid-column: 4 / 7;
+  grid-row: 2 / 3;
+}
+
+.home-sub-title {
+  grid-column: 4 / 7;
+  grid-row: 3 / 4;
+}
+
+.home-sub-sub {
+  grid-column: 4 / 7;
+  grid-row: 4 / 5;
+}
+
+.home-first-image,
+.home-second-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+@media screen and (min-width: 480px) {
+  .home-skills-description {
+    grid-column: 1 / 12;
+    grid-row: 1 / 2;
+  }
+
+  .about-link {
+    grid-column: 13 / 25;
+    grid-row: 1 / 2;
+  }
+
+  .home-title {
+    grid-column: 13 / 25;
+    grid-row: 2 / 3;
+  }
+
+  .home-sub-title {
+    grid-column: 13 / 25;
+    grid-row: 3 / 4;
+  }
+
+  .home-sub-sub {
+    grid-column: 13 / 25;
+    grid-row: 4 / 5;
+  }
+}
