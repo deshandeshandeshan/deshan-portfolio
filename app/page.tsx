@@ -25,8 +25,12 @@ export default async function Home() {
       <ul className="home-projects-list">
         {projects.map((project) => (
           <li className="home-project" key={project._id}>
-            {project.name}
-            {project.year}
+            <div className="home-project-details">
+              {project.name}
+              {project.year}
+              {project.contributions}
+              {project.year}
+            </div>
             <Link href={`/projects/${project.slug}`} className="">
               View Project →
             </Link>

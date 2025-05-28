@@ -5,6 +5,8 @@ export const PROJECTS_QUERY = defineQuery(`
     _id,
     _createdAt,
     name,
+    year,
+    contributions,
     "slug": slug.current,
     firstImage {
       alt,
