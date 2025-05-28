@@ -11,6 +11,11 @@ const project = {
       type: "string",
     }),
     defineField({
+      name: "year",
+      title: "Year Completed",
+      type: "string",
+    }),
+    defineField({
       name: "contributions",
       title: "Contributions",
       type: "string",

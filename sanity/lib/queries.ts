@@ -1,13 +1,26 @@
 import { defineQuery } from "next-sanity";
 
 export const PROJECTS_QUERY = defineQuery(`
-    *[_type == "project"]{
+  *[_type == "project"]{
+    _id,
+    _createdAt,
+    name,
+    "slug": slug.current,
+    firstImage {
+      alt,
+      asset->{
         _id,
-        _createdAt,
-        name,
-        "slug": slug.current,
-        "image": image.asset->url,
-        url,
-        content
-    }
+        url
+      }
+    },
+    secondImage {
+      alt,
+      asset->{
+        _id,
+        url
+      }
+    },
+    url,
+    content
+  }
 `);

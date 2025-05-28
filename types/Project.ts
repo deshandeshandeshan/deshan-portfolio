@@ -3,6 +3,20 @@ export type Project = {
   _createdAt: string;
   name: string;
   slug: string;
-  firstImage: string;
-  secondImage: string;
+  year: string;
+  contributions: string;
+  firstImage: {
+    asset: {
+      _id: string;
+      url: string;
+    };
+    alt: string;
+  };
+  secondImage: {
+    asset: {
+      _id: string;
+      url: string;
+    };
+    alt: string;
+  };
 };

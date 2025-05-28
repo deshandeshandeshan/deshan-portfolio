@@ -1,5 +1,6 @@
 import { getProjects } from "@/sanity/sanity-utils";
 import Link from "next/link";
+import Image from "next/image";
 
 import "./page.css";
 import "./grid.css";
@@ -7,7 +8,7 @@ import "./grid.css";
 export default async function Home() {
   const projects = await getProjects();
   return (
-    <main>
+    <main className="home-page mobile-padding">
       <div className="landing-content">
         <div className="landing-content-container grid">
           <div className="home-skills-description">
@@ -24,10 +25,33 @@ export default async function Home() {
       <ul className="home-projects-list">
         {projects.map((project) => (
           <li className="home-project" key={project._id}>
+            {project.name}
+            {project.year}
             <Link href={`/projects/${project.slug}`} className="">
               View Project →
             </Link>
-            {project.name}
+            <div className="home-first-image-wrapper">
+              {project.firstImage?.asset?.url && (
+                <Image
+                  src={project.firstImage.asset.url}
+                  alt={project.firstImage.alt || project.name}
+                  width={800}
+                  height={600}
+                  className="home-first-image"
+                />
+              )}
+            </div>
+            <div className="home-second-image-wrapper">
+              {project.secondImage?.asset?.url && (
+                <Image
+                  src={project.secondImage.asset.url}
+                  alt={project.secondImage.alt || project.name}
+                  width={800}
+                  height={600}
+                  className="home-second-image"
+                />
+              )}
+            </div>
           </li>
         ))}
       </ul>
