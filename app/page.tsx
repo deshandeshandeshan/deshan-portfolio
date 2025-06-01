@@ -10,28 +10,41 @@ export default async function Home() {
   return (
     <main className="home-page mobile-padding">
       <div className="landing-content">
-        <div className="landing-content-container grid">
-          <div className="home-skills-description">
+        <div className="landing-content-container grid spacing-120">
+          <div className="home-skills-description type-body">
             Web developer and Designer
           </div>
-          <Link href={"/about"} className="about-link spacing-120">
+          <Link
+            href={"/about"}
+            className="about-link spacing-120 type-body text-orange"
+          >
             About →
           </Link>
-          <h1 className="home-title">Deshan Mclachlan</h1>
-          <h2 className="home-sub-title">Selected Work</h2>
-          <h3 className="home-sub-sub">23&apos; - present</h3>
+          <h1 className="home-title type-heading spacing-4">
+            Deshan Mclachlan
+          </h1>
+          <h2 className="home-sub-title type-sub spacing-4">Selected Work</h2>
+          <h3 className="home-sub-sub type-body spacing-4">
+            23&apos; - present
+          </h3>
         </div>
       </div>
       <ul className="home-projects-list">
         {projects.map((project) => (
-          <li className="home-project" key={project._id}>
+          <li className="home-project grid spacing-80" key={project._id}>
             <div className="home-project-details">
-              {project.name}
-              {project.year}
-              {project.contributions}
-              {project.year}
+              <div className="spacing-4">
+                <span className="type-sub gap-4">{project.name}</span>
+                <span className="text-grey type-details-regular">
+                  {project.year}
+                </span>
+              </div>
+              <div className="type-body spacing-4">{project.contributions}</div>
             </div>
-            <Link href={`/projects/${project.slug}`} className="">
+            <Link
+              href={`/projects/${project.slug}`}
+              className="home-view-project type-body spacing-16 text-orange"
+            >
               View Project →
             </Link>
             <div className="home-first-image-wrapper">
