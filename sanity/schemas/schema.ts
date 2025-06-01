@@ -1,8 +1,8 @@
-import { defineField } from "sanity";
+import { defineField, defineType } from "sanity";
 
-const project = {
+export const project = defineType({
   name: "project",
-  title: "projects",
+  title: "Projects",
   type: "document",
   fields: [
     defineField({
@@ -51,6 +51,4 @@ const project = {
       ],
     }),
   ],
-};
-
-export default project;
+});

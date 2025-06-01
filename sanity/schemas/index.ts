@@ -1,5 +1,6 @@
-import project from "./schema";
+import { about } from "./about";
+import { project } from "./schema";
 
-const schemas = [project];
+const schemas = [project, about];
 
 export default schemas;
