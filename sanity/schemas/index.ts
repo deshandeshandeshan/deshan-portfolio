@@ -1,6 +1,7 @@
-import { about } from "./about";
+import { contact } from "./contact";
 import { project } from "./schema";
+import { work } from "./Work";
 
-const schemas = [project, about];
+const schemas = [project, contact, work];
 
 export default schemas;
