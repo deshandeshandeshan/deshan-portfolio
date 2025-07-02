@@ -6,7 +6,6 @@ export const PROJECTS_QUERY = defineQuery(`
     _createdAt,
     name,
     year,
-    contributions,
     "slug": slug.current,
     firstImage {
       alt,
@@ -22,7 +21,15 @@ export const PROJECTS_QUERY = defineQuery(`
         url
       }
     },
-    url,
-    content
+    liveSite {
+      liveSite,
+      liveSiteTitle
+    },
+    projectDeliverables[] {
+      deliverable
+    },
+    pojectStack[] {
+      technology
+    }
   }
 `);

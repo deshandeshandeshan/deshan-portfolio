@@ -40,7 +40,19 @@ a {
   color: #414242;
 }
 
+.text-grey {
+  color: #7b7b7b;
+}
+
+.text-orange {
+  color: #ffa10b;
+}
+
 /* Spacing scale */
+
+.spacing-4 {
+  padding-bottom: 4px;
+}
 
 .spacing-12 {
   padding-bottom: 6px;
@@ -82,6 +94,10 @@ a {
   padding-top: 80px;
 }
 
+.gap-4 {
+  margin-right: 4px;
+}
+
 /* Mobile Font Sizes */
 
 .type-heading {
@@ -99,7 +115,7 @@ a {
 .type-body {
   font-size: 12px;
   line-height: 14px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .type-details-bold {

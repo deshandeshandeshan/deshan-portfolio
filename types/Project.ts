@@ -4,19 +4,33 @@ export type Project = {
   name: string;
   slug: string;
   year: string;
-  contributions: string;
-  firstImage: {
+
+  liveSite?: {
+    liveSite?: string;
+    liveSiteTitle?: string;
+  };
+
+  firstImage?: {
     asset: {
       _id: string;
       url: string;
     };
-    alt: string;
+    alt?: string;
   };
-  secondImage: {
+
+  secondImage?: {
     asset: {
       _id: string;
       url: string;
     };
-    alt: string;
+    alt?: string;
   };
+
+  projectDeliverables?: {
+    deliverable: string;
+  }[];
+
+  pojectStack?: {
+    technology: string;
+  }[];
 };
