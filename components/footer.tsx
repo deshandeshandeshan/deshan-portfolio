@@ -1,9 +1,11 @@
+import "./footer.css";
+
 const Footer = () => {
   return (
     <footer>
-      <ul>
-        <li>DESHAN MCLACHLAN</li>
-        <li>TOP</li>
+      <ul className="footer-list">
+        <li className="footer-name type-heading">DESHAN MCLACHLAN</li>
+        <li className="back-to-top type-heading">TOP</li>
       </ul>
     </footer>
   );

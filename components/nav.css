@@ -1,0 +1,9 @@
+.nav-list {
+  display: flex;
+  padding: 16px;
+  border-bottom: solid 1px #9d9d9d;
+}
+
+.contact {
+  margin-left: auto;
+}
