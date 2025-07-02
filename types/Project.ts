@@ -4,6 +4,7 @@ export type Project = {
   name: string;
   slug: string;
   year: string;
+  description: string;
 
   liveSite?: {
     liveSite?: string;
@@ -27,10 +28,12 @@ export type Project = {
   };
 
   projectDeliverables?: {
+    _id: string;
     deliverable: string;
   }[];
 
   pojectStack?: {
+    _id: string;
     technology: string;
   }[];
 };

@@ -99,7 +99,6 @@ a {
 }
 
 /* Mobile Font Sizes */
-
 .type-heading {
   font-size: 20px;
   line-height: 22px;
@@ -116,6 +115,12 @@ a {
   font-size: 12px;
   line-height: 14px;
   font-weight: 500;
+}
+
+.type-body-bold {
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 600;
 }
 
 .type-details-bold {
@@ -181,6 +186,12 @@ a {
   .type-body {
     font-size: 15px;
     line-height: 17px;
+  }
+
+  .type-body-bold {
+    font-size: 15px;
+    line-height: 14px;
+    font-weight: 600;
   }
 
   .type-details-bold {

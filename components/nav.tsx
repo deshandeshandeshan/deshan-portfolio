@@ -7,7 +7,7 @@ const Nav = () => {
     <nav>
       <ul className="nav-list">
         <li>
-          <Link href={"/about"} className="work-link type-heading">
+          <Link href={"/"} className="work-link type-heading">
             WORK
           </Link>
         </li>

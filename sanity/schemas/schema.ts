@@ -17,6 +17,11 @@ export const project = defineType({
       options: { source: "name" },
     }),
     defineField({
+      name: "description",
+      title: "Description",
+      type: "text",
+    }),
+    defineField({
       name: "year",
       title: "Year Published",
       type: "string",
@@ -34,7 +39,7 @@ export const project = defineType({
         defineField({
           name: "liveSiteTitle",
           title: "Live Site Title (format: 'LIVESITE.COM')",
-          type: "url",
+          type: "string",
         }),
       ],
     }),
