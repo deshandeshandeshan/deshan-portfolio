@@ -33,3 +33,19 @@ export const PROJECTS_QUERY = defineQuery(`
     }
   }
 `);
+
+export const WORK_QUERY = defineQuery(`
+  *[_type == "work"][0]{
+    _id,
+    _createdAt,
+    title,
+    description,
+    image {
+      alt,
+      asset->{
+        _id,
+        url
+      }
+    }
+  }
+`);

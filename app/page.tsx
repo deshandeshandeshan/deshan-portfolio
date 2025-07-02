@@ -1,4 +1,4 @@
-import { getProjects } from "@/sanity/sanity-utils";
+import { getProjects, getWork } from "@/sanity/sanity-utils";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -7,20 +7,29 @@ import "./grid.css";
 
 export default async function Home() {
   const projects = await getProjects();
+  const work = await getWork();
+
+  console.log(work);
   return (
-    <main className="home-page mobile-padding">
+    <main className="home-page">
       <div className="landing-content">
-        <div className="landing-content-container grid spacing-120">
-          <h1 className="home-title type-heading spacing-4">
-            Deshan Mclachlan
-          </h1>
-          <h2 className="home-sub-title type-sub spacing-4">Selected Work</h2>
-          <h3 className="home-sub-sub type-body spacing-4">
-            23&apos; - present
-          </h3>
+        <div className="landing-content-container grid">
+          <h1 className="header-title type-heading">{work.title}</h1>
+          <hr className="full-bleed-divider" />
+          <p className="header-description type-body">{work.description}</p>
+          <Image
+            src={work.image.asset.url}
+            alt={work.image.alt || work.name}
+            width={800}
+            height={600}
+            className="header-image"
+          />
         </div>
       </div>
-      <ul className="home-projects-list">
+      <div className="work-projects-container">
+        <h2 className="work-projects type-heading">PROJECTS</h2>
+      </div>
+      <ul className="home-projects-list mobile-padding">
         {projects.map((project) => (
           <li className="home-project grid spacing-80" key={project._id}>
             <div className="home-project-details">

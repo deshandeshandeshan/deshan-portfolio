@@ -1,5 +1,5 @@
 import { createClient, groq } from "next-sanity";
-import { PROJECTS_QUERY } from "./lib/queries";
+import { PROJECTS_QUERY, WORK_QUERY } from "./lib/queries";
 import { Project } from "@/types/Project";
 
 export const client = createClient({
@@ -18,6 +18,17 @@ export async function getProjects(): Promise<Project[]> {
   });
 
   return client.fetch(PROJECTS_QUERY);
+}
+
+export async function getWork() {
+  const client = createClient({
+    projectId: "7t1ogy4h",
+    dataset: "production",
+    apiVersion: "2025-05-21",
+    useCdn: true,
+  });
+
+  return client.fetch(WORK_QUERY);
 }
 
 export async function getProject(slug: string): Promise<Project> {

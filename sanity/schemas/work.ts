@@ -8,7 +8,7 @@ export const work = defineType({
     defineField({
       name: "title",
       title: "Title",
-      type: "text",
+      type: "string",
     }),
     defineField({
       name: "description",
