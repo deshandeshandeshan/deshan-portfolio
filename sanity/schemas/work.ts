@@ -15,5 +15,17 @@ export const work = defineType({
       title: "Description",
       type: "text",
     }),
+    defineField({
+      name: "image",
+      title: "Image",
+      type: "image",
+      fields: [
+        defineField({
+          name: "alt",
+          type: "string",
+          title: "Alternative text",
+        }),
+      ],
+    }),
   ],
 });
