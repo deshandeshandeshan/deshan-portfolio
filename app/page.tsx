@@ -11,15 +11,6 @@ export default async function Home() {
     <main className="home-page mobile-padding">
       <div className="landing-content">
         <div className="landing-content-container grid spacing-120">
-          <div className="home-skills-description type-body">
-            Web developer and Designer
-          </div>
-          <Link
-            href={"/about"}
-            className="about-link spacing-120 type-body text-orange"
-          >
-            About →
-          </Link>
           <h1 className="home-title type-heading spacing-4">
             Deshan Mclachlan
           </h1>
@@ -39,7 +30,6 @@ export default async function Home() {
                   {project.year}
                 </span>
               </div>
-              <div className="type-body spacing-4">{project.contributions}</div>
             </div>
             <Link
               href={`/projects/${project.slug}`}
