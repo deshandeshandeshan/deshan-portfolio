@@ -5,7 +5,12 @@
 }
 
 :root {
-  --font-inter: "InterVariable", sans-serif;
+  font-family: "Inter", sans-serif;
+}
+@supports (font-variation-settings: normal) {
+  :root {
+    font-family: "Inter var", sans-serif;
+  }
 }
 
 body {
@@ -37,15 +42,21 @@ a {
 /* Text Colours */
 
 .text-black {
-  color: #414242;
+  color: #2d2a26;
 }
 
 .text-grey {
-  color: #7b7b7b;
+  color: #9d9d9d;
 }
 
-.text-orange {
-  color: #ffa10b;
+.text-blue {
+  color: #1b40f6;
+}
+
+/* Background Colour*/
+
+.bg-off-white {
+  background-color: #efede9;
 }
 
 /* Spacing scale */

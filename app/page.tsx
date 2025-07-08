@@ -8,15 +8,17 @@ import "./grid.css";
 export default async function Home() {
   const projects = await getProjects();
   const work = await getWork();
-
-  console.log(work);
   return (
     <main className="home-page">
       <div className="landing-content">
         <div className="landing-content-container grid">
-          <h1 className="header-title type-heading">{work.title}</h1>
-          <hr className="full-bleed-divider" />
-          <p className="header-description type-body">{work.description}</p>
+          <div className="landing-content-header grid">
+            <h1 className="header-title type-heading">{work.title}</h1>
+            <hr className="full-bleed-divider" />
+            <p className="header-description type-body text-grey">
+              {work.description}
+            </p>
+          </div>
           <Image
             src={work.image.asset.url}
             alt={work.image.alt || work.name}
@@ -31,18 +33,18 @@ export default async function Home() {
       </div>
       <ul className="home-projects-list spacing-120">
         {projects.map((project) => (
-          <li className="" key={project._id}>
+          <li className="project" key={project._id}>
             <div className="home-project grid">
-              <div className="home-project-details spacing-80">
+              <div className="home-project-details spacing-64">
                 <h2 className="project-title type-sub spacing-4">
                   {project.name}
                 </h2>
-                <p className="project-title type-body spacing-16">
+                <p className="project-title type-body spacing-16 text-grey">
                   {project.description}
                 </p>
                 <Link
                   href={`/projects/${project.slug}`}
-                  className="home-view-project type-body spacing-16 text-orange"
+                  className="home-view-project type-body spacing-16 text-blue"
                 >
                   View Project →
                 </Link>
@@ -50,13 +52,16 @@ export default async function Home() {
               <div className="first-project-details">
                 <div className="spacing-12">
                   <h3 className="type-body-bold">Live Site</h3>
-                  <a href={project.liveSite?.liveSite} className="type-body">
+                  <a
+                    href={project.liveSite?.liveSite}
+                    className="type-body text-grey"
+                  >
                     {project.liveSite?.liveSiteTitle}
                   </a>
                 </div>
                 <div>
                   <h3 className="type-body-bold">Deliverables</h3>
-                  <ul>
+                  <ul className="text-grey">
                     {project.projectDeliverables?.map((projectDeliverable) => (
                       <li key={projectDeliverable._id} className="type-body">
                         {projectDeliverable.deliverable}
@@ -68,11 +73,11 @@ export default async function Home() {
               <div className="second-project-details">
                 <div className="spacing-12">
                   <h3 className="type-body-bold">Published</h3>
-                  <p className="type-body">{project.year}</p>
+                  <p className="type-body text-grey">{project.year}</p>
                 </div>
                 <div>
                   <h3 className="type-body-bold">Stack</h3>
-                  <ul>
+                  <ul className="text-grey">
                     {project.pojectStack?.map((stack) => (
                       <li key={stack._id} className="type-body">
                         {stack.technology}
