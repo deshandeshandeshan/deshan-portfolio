@@ -13,15 +13,15 @@ export default async function Home() {
       <div className="landing-content">
         <div className="landing-content-container grid">
           <div className="landing-content-header grid">
-            <h1 className="header-title type-heading">{work.title}</h1>
+            <h1 className="header-title type-heading">{work?.title}</h1>
             <hr className="full-bleed-divider" />
             <p className="header-description type-body text-grey">
-              {work.description}
+              {work?.description}
             </p>
           </div>
           <Image
-            src={work.image.asset.url}
-            alt={work.image.alt || work.name}
+            src={work?.image?.asset?.url}
+            alt={work?.image?.alt || work?.title}
             width={800}
             height={600}
             className="header-image"
