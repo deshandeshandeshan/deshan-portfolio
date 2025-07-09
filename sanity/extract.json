@@ -525,7 +525,7 @@
           },
           "optional": true
         },
-        "pojectStack": {
+        "projectStack": {
           "type": "objectAttribute",
           "value": {
             "type": "array",
@@ -1512,7 +1512,7 @@
         },
         "optional": true
       },
-      "pojectStack": {
+      "projectStack": {
         "type": "objectAttribute",
         "value": {
           "type": "array",

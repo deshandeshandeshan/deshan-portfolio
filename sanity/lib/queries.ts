@@ -30,7 +30,7 @@ export const PROJECTS_QUERY = defineQuery(`
       _key,
       deliverable
     },
-    pojectStack[] {
+    projectStack[] {
       _key,
       technology
     }

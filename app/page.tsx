@@ -87,7 +87,7 @@ export default async function Home() {
                 <div>
                   <h3 className="type-body-bold">Stack</h3>
                   <ul className="text-grey">
-                    {project.pojectStack?.map((stack, index) => (
+                    {project.projectStack?.map((stack, index) => (
                       <li key={stack._key ?? index} className="type-body">
                         {stack.technology}
                       </li>

@@ -101,7 +101,7 @@ export type ProjectDetails = {
     _type: "deliverables";
     _key: string;
   }>;
-  pojectStack?: Array<{
+  projectStack?: Array<{
     technology?: string;
     _type: "stack";
     _key: string;
@@ -267,7 +267,7 @@ export type Project = {
     _type: "deliverables";
     _key: string;
   }>;
-  pojectStack?: Array<{
+  projectStack?: Array<{
     technology?: string;
     _type: "stack";
     _key: string;
@@ -368,7 +368,7 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity/lib/queries.ts
 // Variable: PROJECTS_QUERY
-// Query: *[_type == "project"]{    _id,    _createdAt,    name,    year,    description,    "slug": slug.current,    firstImage {      alt,      asset->{        _id,        url      }    },    secondImage {      alt,      asset->{        _id,        url      }    },    liveSite {      liveSite,      liveSiteTitle    },    projectDeliverables[] {      _key,      deliverable    },    pojectStack[] {      _key,      technology    }  }
+// Query: *[_type == "project"]{    _id,    _createdAt,    name,    year,    description,    "slug": slug.current,    firstImage {      alt,      asset->{        _id,        url      }    },    secondImage {      alt,      asset->{        _id,        url      }    },    liveSite {      liveSite,      liveSiteTitle    },    projectDeliverables[] {      _key,      deliverable    },    projectStack[] {      _key,      technology    }  }
 export type PROJECTS_QUERYResult = Array<{
   _id: string;
   _createdAt: string;
@@ -398,7 +398,7 @@ export type PROJECTS_QUERYResult = Array<{
     _key: string;
     deliverable: string | null;
   }> | null;
-  pojectStack: Array<{
+  projectStack: Array<{
     _key: string;
     technology: string | null;
   }> | null;
@@ -473,7 +473,9 @@ export type SINGLE_PROJECT_QUERYResult = {
     projectDeliverables: Array<{
       deliverable: string | null;
     }> | null;
-    projectStack: null;
+    projectStack: Array<{
+      technology: string | null;
+    }> | null;
   } | {
     _key: string;
     _type: "projectHeaderImage";
@@ -508,7 +510,7 @@ export type WORK_QUERYResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "\n  *[_type == \"project\"]{\n    _id,\n    _createdAt,\n    name,\n    year,\n    description,\n    \"slug\": slug.current,\n    firstImage {\n      alt,\n      asset->{\n        _id,\n        url\n      }\n    },\n    secondImage {\n      alt,\n      asset->{\n        _id,\n        url\n      }\n    },\n    liveSite {\n      liveSite,\n      liveSiteTitle\n    },\n    projectDeliverables[] {\n      _key,\n      deliverable\n    },\n    pojectStack[] {\n      _key,\n      technology\n    }\n  }\n": PROJECTS_QUERYResult;
+    "\n  *[_type == \"project\"]{\n    _id,\n    _createdAt,\n    name,\n    year,\n    description,\n    \"slug\": slug.current,\n    firstImage {\n      alt,\n      asset->{\n        _id,\n        url\n      }\n    },\n    secondImage {\n      alt,\n      asset->{\n        _id,\n        url\n      }\n    },\n    liveSite {\n      liveSite,\n      liveSiteTitle\n    },\n    projectDeliverables[] {\n      _key,\n      deliverable\n    },\n    projectStack[] {\n      _key,\n      technology\n    }\n  }\n": PROJECTS_QUERYResult;
     "\n  *[_type == \"project\" && slug.current == $slug][0] {\n    _id,\n    _createdAt,\n    content[]{\n      _key,\n      _type,\n\n      _type == \"projectHeaderImage\" => {\n        title,\n        image{ alt, caption, asset->{ _id, url } }\n      },\n\n      _type == \"landscape\" => {\n        title,\n        image{ alt, caption, asset->{ _id, url } }\n      },\n\n      _type == \"doubleLandscape\" => {\n        title,\n        leftImage{ alt, caption, asset->{ _id, url } },\n        rightImage{ alt, caption, asset->{ _id, url } }\n      },\n\n      _type == \"doublePortrait\" => {\n        title,\n        leftImage{ alt, caption, asset->{ _id, url } },\n        rightImage{ alt, caption, asset->{ _id, url } }\n      },\n\n      _type == \"projectDetails\" => {\n        title,\n        description,\n        year,\n        liveSite{ liveSite, liveSiteTitle },\n        projectDeliverables[]{ deliverable },\n        projectStack[]{ technology }\n      }\n    }\n  }\n": SINGLE_PROJECT_QUERYResult;
     "\n  *[_type == \"work\"][0]{\n    _id,\n    _createdAt,\n    title,\n    description,\n    image {\n      alt,\n      asset->{\n        _id,\n        url\n      }\n    }\n  }\n": WORK_QUERYResult;
   }

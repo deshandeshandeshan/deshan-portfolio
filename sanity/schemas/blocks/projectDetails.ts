@@ -56,7 +56,7 @@ export const projectDetails = defineType({
       ],
     }),
     defineField({
-      name: "pojectStack",
+      name: "projectStack",
       title: "Project Stack",
       type: "array",
       of: [
