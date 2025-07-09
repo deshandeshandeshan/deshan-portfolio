@@ -4,6 +4,7 @@ import { landscape } from "./blocks/landscape";
 import { projectDetails } from "./blocks/projectDetails";
 import { projectHeaderImage } from "./blocks/projectHeaderImage";
 import { contact } from "./contact";
+import { pageBuilderType } from "./pageBuilder";
 import { project } from "./schema";
 import { work } from "./work";
 
@@ -11,6 +12,7 @@ const schemas = [
   project,
   contact,
   work,
+  pageBuilderType,
 
   // Blocks
   doublePortrait,

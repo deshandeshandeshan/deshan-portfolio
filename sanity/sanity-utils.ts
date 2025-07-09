@@ -1,15 +1,18 @@
-import { createClient, groq } from "next-sanity";
-import { PROJECTS_QUERY, WORK_QUERY } from "./lib/queries";
-import { Project } from "@/types/Project";
+import { createClient } from "next-sanity";
+import {
+  PROJECTS_QUERY,
+  SINGLE_PROJECT_QUERY,
+  WORK_QUERY,
+} from "./lib/queries";
 
 export const client = createClient({
-  projectId: "qzoemo7f",
+  projectId: "7t1ogy4h",
   dataset: "production",
   apiVersion: "2025-03-11",
   useCdn: true,
 });
 
-export async function getProjects(): Promise<Project[]> {
+export async function getProjects() {
   const client = createClient({
     projectId: "7t1ogy4h",
     dataset: "production",
@@ -31,7 +34,7 @@ export async function getWork() {
   return client.fetch(WORK_QUERY);
 }
 
-export async function getProject(slug: string): Promise<Project> {
+export async function getProject(slug: string) {
   const client = createClient({
     projectId: "7t1ogy4h",
     dataset: "production",
@@ -39,16 +42,5 @@ export async function getProject(slug: string): Promise<Project> {
     useCdn: true,
   });
 
-  return client.fetch(
-    groq`*[_type == "project" && slug.current == $slug][0]{
-        _id,
-        _createdAt,
-        name,
-        "slug": slug.current,
-        "image": image.asset->url,
-        url,
-        content
-    }`,
-    { slug }
-  );
+  return client.fetch(SINGLE_PROJECT_QUERY, { slug });
 }

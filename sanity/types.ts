@@ -193,6 +193,18 @@ export type DoublePortrait = {
   };
 };
 
+export type PageBuilder = Array<{
+  _key: string;
+} & DoublePortrait | {
+  _key: string;
+} & Landscape | {
+  _key: string;
+} & DoubleLandscape | {
+  _key: string;
+} & ProjectDetails | {
+  _key: string;
+} & ProjectHeaderImage>;
+
 export type Work = {
   _id: string;
   _type: "work";
@@ -286,6 +298,7 @@ export type Project = {
     alt?: string;
     _type: "image";
   };
+  content?: PageBuilder;
 };
 
 export type SanityImageCrop = {
@@ -351,11 +364,11 @@ export type Slug = {
   source?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | ProjectHeaderImage | ProjectDetails | Landscape | DoubleLandscape | DoublePortrait | Work | Contact | Project | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | ProjectHeaderImage | ProjectDetails | Landscape | DoubleLandscape | DoublePortrait | PageBuilder | Work | Contact | Project | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity/lib/queries.ts
 // Variable: PROJECTS_QUERY
-// Query: *[_type == "project"]{    _id,    _createdAt,    name,    year,    description,    "slug": slug.current,    firstImage {      alt,      asset->{        _id,        url      }    },    secondImage {      alt,      asset->{        _id,        url      }    },    liveSite {      liveSite,      liveSiteTitle    },    projectDeliverables[] {      deliverable    },    pojectStack[] {      technology    }  }
+// Query: *[_type == "project"]{    _id,    _createdAt,    name,    year,    description,    "slug": slug.current,    firstImage {      alt,      asset->{        _id,        url      }    },    secondImage {      alt,      asset->{        _id,        url      }    },    liveSite {      liveSite,      liveSiteTitle    },    projectDeliverables[] {      _key,      deliverable    },    pojectStack[] {      _key,      technology    }  }
 export type PROJECTS_QUERYResult = Array<{
   _id: string;
   _createdAt: string;
@@ -382,46 +395,98 @@ export type PROJECTS_QUERYResult = Array<{
     liveSiteTitle: string | null;
   } | null;
   projectDeliverables: Array<{
+    _key: string;
     deliverable: string | null;
   }> | null;
   pojectStack: Array<{
+    _key: string;
     technology: string | null;
   }> | null;
 }>;
-// Variable: PROJECT_QUERY
-// Query: *[_type == "project" && slug.current == $slug][0] {    _id,    _createdAt,    name,    year,    description,    "slug": slug.current,    firstImage {      alt,      asset->{        _id,        url      }    },    secondImage {      alt,      asset->{        _id,        url      }    },    liveSite {      liveSite,      liveSiteTitle    },    projectDeliverables[] {      deliverable    },    pojectStack[] {      technology    },    // page‐builder blocks    content[] {      _key,      _type,      // project header image block      _type == "projectHeaderImage" => {        title,        image {          alt,          caption,          asset-> { _id, url }        }      },      // single‐image landscape block      _type == "landscape" => {        title,        image {          alt,          caption,          asset-> { _id, url }        }      },      // two‐image landscape block      _type == "doubleLandscape" => {        title,        leftImage {          alt,          caption,          asset-> { _id, url }        },        rightImage {          alt,          caption,          asset-> { _id, url }        }      },      // two‐image portrait block      _type == "doublePortrait" => {        title,        leftImage {          alt,          caption,          asset-> { _id, url }        },        rightImage {          alt,          caption,          asset-> { _id, url }        }      },      // rich project details block      _type == "projectDetails" => {        title,        description,        year,        liveSite {          liveSite,          liveSiteTitle        },        projectDeliverables[] {          deliverable        },        pojectStack[] {          technology        }      }    }  }
-export type PROJECT_QUERYResult = {
+// Variable: SINGLE_PROJECT_QUERY
+// Query: *[_type == "project" && slug.current == $slug][0] {    _id,    _createdAt,    content[]{      _key,      _type,      _type == "projectHeaderImage" => {        title,        image{ alt, caption, asset->{ _id, url } }      },      _type == "landscape" => {        title,        image{ alt, caption, asset->{ _id, url } }      },      _type == "doubleLandscape" => {        title,        leftImage{ alt, caption, asset->{ _id, url } },        rightImage{ alt, caption, asset->{ _id, url } }      },      _type == "doublePortrait" => {        title,        leftImage{ alt, caption, asset->{ _id, url } },        rightImage{ alt, caption, asset->{ _id, url } }      },      _type == "projectDetails" => {        title,        description,        year,        liveSite{ liveSite, liveSiteTitle },        projectDeliverables[]{ deliverable },        projectStack[]{ technology }      }    }  }
+export type SINGLE_PROJECT_QUERYResult = {
   _id: string;
   _createdAt: string;
-  name: string | null;
-  year: string | null;
-  description: string | null;
-  slug: string | null;
-  firstImage: {
-    alt: string | null;
-    asset: {
-      _id: string;
-      url: string | null;
+  content: Array<{
+    _key: string;
+    _type: "doubleLandscape";
+    title: string | null;
+    leftImage: {
+      alt: string | null;
+      caption: string | null;
+      asset: {
+        _id: string;
+        url: string | null;
+      } | null;
     } | null;
-  } | null;
-  secondImage: {
-    alt: string | null;
-    asset: {
-      _id: string;
-      url: string | null;
+    rightImage: {
+      alt: string | null;
+      caption: string | null;
+      asset: {
+        _id: string;
+        url: string | null;
+      } | null;
     } | null;
-  } | null;
-  liveSite: {
-    liveSite: string | null;
-    liveSiteTitle: string | null;
-  } | null;
-  projectDeliverables: Array<{
-    deliverable: string | null;
+  } | {
+    _key: string;
+    _type: "doublePortrait";
+    title: string | null;
+    leftImage: {
+      alt: string | null;
+      caption: string | null;
+      asset: {
+        _id: string;
+        url: string | null;
+      } | null;
+    } | null;
+    rightImage: {
+      alt: string | null;
+      caption: string | null;
+      asset: {
+        _id: string;
+        url: string | null;
+      } | null;
+    } | null;
+  } | {
+    _key: string;
+    _type: "landscape";
+    title: string | null;
+    image: {
+      alt: string | null;
+      caption: string | null;
+      asset: {
+        _id: string;
+        url: string | null;
+      } | null;
+    } | null;
+  } | {
+    _key: string;
+    _type: "projectDetails";
+    title: string | null;
+    description: string | null;
+    year: string | null;
+    liveSite: {
+      liveSite: string | null;
+      liveSiteTitle: string | null;
+    } | null;
+    projectDeliverables: Array<{
+      deliverable: string | null;
+    }> | null;
+    projectStack: null;
+  } | {
+    _key: string;
+    _type: "projectHeaderImage";
+    title: string | null;
+    image: {
+      alt: string | null;
+      caption: string | null;
+      asset: {
+        _id: string;
+        url: string | null;
+      } | null;
+    } | null;
   }> | null;
-  pojectStack: Array<{
-    technology: string | null;
-  }> | null;
-  content: null;
 } | null;
 // Variable: WORK_QUERY
 // Query: *[_type == "work"][0]{    _id,    _createdAt,    title,    description,    image {      alt,      asset->{        _id,        url      }    }  }
@@ -443,8 +508,8 @@ export type WORK_QUERYResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "\n  *[_type == \"project\"]{\n    _id,\n    _createdAt,\n    name,\n    year,\n    description,\n    \"slug\": slug.current,\n    firstImage {\n      alt,\n      asset->{\n        _id,\n        url\n      }\n    },\n    secondImage {\n      alt,\n      asset->{\n        _id,\n        url\n      }\n    },\n    liveSite {\n      liveSite,\n      liveSiteTitle\n    },\n    projectDeliverables[] {\n      deliverable\n    },\n    pojectStack[] {\n      technology\n    }\n  }\n": PROJECTS_QUERYResult;
-    "\n  *[_type == \"project\" && slug.current == $slug][0] {\n    _id,\n    _createdAt,\n    name,\n    year,\n    description,\n    \"slug\": slug.current,\n\n    firstImage {\n      alt,\n      asset->{\n        _id,\n        url\n      }\n    },\n    secondImage {\n      alt,\n      asset->{\n        _id,\n        url\n      }\n    },\n    liveSite {\n      liveSite,\n      liveSiteTitle\n    },\n    projectDeliverables[] {\n      deliverable\n    },\n    pojectStack[] {\n      technology\n    },\n\n    // page\u2010builder blocks\n    content[] {\n      _key,\n      _type,\n\n      // project header image block\n      _type == \"projectHeaderImage\" => {\n        title,\n        image {\n          alt,\n          caption,\n          asset-> { _id, url }\n        }\n      },\n\n      // single\u2010image landscape block\n      _type == \"landscape\" => {\n        title,\n        image {\n          alt,\n          caption,\n          asset-> { _id, url }\n        }\n      },\n\n      // two\u2010image landscape block\n      _type == \"doubleLandscape\" => {\n        title,\n        leftImage {\n          alt,\n          caption,\n          asset-> { _id, url }\n        },\n        rightImage {\n          alt,\n          caption,\n          asset-> { _id, url }\n        }\n      },\n\n      // two\u2010image portrait block\n      _type == \"doublePortrait\" => {\n        title,\n        leftImage {\n          alt,\n          caption,\n          asset-> { _id, url }\n        },\n        rightImage {\n          alt,\n          caption,\n          asset-> { _id, url }\n        }\n      },\n\n      // rich project details block\n      _type == \"projectDetails\" => {\n        title,\n        description,\n        year,\n        liveSite {\n          liveSite,\n          liveSiteTitle\n        },\n        projectDeliverables[] {\n          deliverable\n        },\n        pojectStack[] {\n          technology\n        }\n      }\n    }\n  }\n": PROJECT_QUERYResult;
+    "\n  *[_type == \"project\"]{\n    _id,\n    _createdAt,\n    name,\n    year,\n    description,\n    \"slug\": slug.current,\n    firstImage {\n      alt,\n      asset->{\n        _id,\n        url\n      }\n    },\n    secondImage {\n      alt,\n      asset->{\n        _id,\n        url\n      }\n    },\n    liveSite {\n      liveSite,\n      liveSiteTitle\n    },\n    projectDeliverables[] {\n      _key,\n      deliverable\n    },\n    pojectStack[] {\n      _key,\n      technology\n    }\n  }\n": PROJECTS_QUERYResult;
+    "\n  *[_type == \"project\" && slug.current == $slug][0] {\n    _id,\n    _createdAt,\n    content[]{\n      _key,\n      _type,\n\n      _type == \"projectHeaderImage\" => {\n        title,\n        image{ alt, caption, asset->{ _id, url } }\n      },\n\n      _type == \"landscape\" => {\n        title,\n        image{ alt, caption, asset->{ _id, url } }\n      },\n\n      _type == \"doubleLandscape\" => {\n        title,\n        leftImage{ alt, caption, asset->{ _id, url } },\n        rightImage{ alt, caption, asset->{ _id, url } }\n      },\n\n      _type == \"doublePortrait\" => {\n        title,\n        leftImage{ alt, caption, asset->{ _id, url } },\n        rightImage{ alt, caption, asset->{ _id, url } }\n      },\n\n      _type == \"projectDetails\" => {\n        title,\n        description,\n        year,\n        liveSite{ liveSite, liveSiteTitle },\n        projectDeliverables[]{ deliverable },\n        projectStack[]{ technology }\n      }\n    }\n  }\n": SINGLE_PROJECT_QUERYResult;
     "\n  *[_type == \"work\"][0]{\n    _id,\n    _createdAt,\n    title,\n    description,\n    image {\n      alt,\n      asset->{\n        _id,\n        url\n      }\n    }\n  }\n": WORK_QUERYResult;
   }
 }

@@ -105,5 +105,9 @@ export const project = defineType({
         }),
       ],
     }),
+    defineField({
+      name: "content",
+      type: "pageBuilder",
+    }),
   ],
 });

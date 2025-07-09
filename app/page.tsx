@@ -13,19 +13,23 @@ export default async function Home() {
       <div className="landing-content">
         <div className="landing-content-container grid">
           <div className="landing-content-header grid">
-            <h1 className="header-title type-heading">{work?.title}</h1>
+            <h1 className="header-title type-heading">
+              {work?.title ?? "Untitled"}
+            </h1>
             <hr className="full-bleed-divider" />
             <p className="header-description type-body text-grey">
-              {work?.description}
+              {work?.description ?? "No description available."}
             </p>
           </div>
-          <Image
-            src={work?.image?.asset?.url}
-            alt={work?.image?.alt || work?.title}
-            width={800}
-            height={600}
-            className="header-image"
-          />
+          {work?.image?.asset?.url && (
+            <Image
+              src={work?.image?.asset?.url}
+              alt={work?.image?.alt || ""}
+              width={800}
+              height={600}
+              className="header-image"
+            />
+          )}
         </div>
       </div>
       <div className="work-projects-container">
@@ -53,7 +57,7 @@ export default async function Home() {
                 <div className="spacing-12">
                   <h3 className="type-body-bold">Live Site</h3>
                   <a
-                    href={project.liveSite?.liveSite}
+                    href={project.liveSite?.liveSite ?? ""}
                     className="type-body text-grey"
                   >
                     {project.liveSite?.liveSiteTitle}
@@ -62,11 +66,16 @@ export default async function Home() {
                 <div>
                   <h3 className="type-body-bold">Deliverables</h3>
                   <ul className="text-grey">
-                    {project.projectDeliverables?.map((projectDeliverable) => (
-                      <li key={projectDeliverable._id} className="type-body">
-                        {projectDeliverable.deliverable}
-                      </li>
-                    ))}
+                    {project.projectDeliverables?.map(
+                      (projectDeliverable, index) => (
+                        <li
+                          key={projectDeliverable._key ?? index}
+                          className="type-body"
+                        >
+                          {projectDeliverable.deliverable}
+                        </li>
+                      )
+                    )}
                   </ul>
                 </div>
               </div>
@@ -78,8 +87,8 @@ export default async function Home() {
                 <div>
                   <h3 className="type-body-bold">Stack</h3>
                   <ul className="text-grey">
-                    {project.pojectStack?.map((stack) => (
-                      <li key={stack._id} className="type-body">
+                    {project.pojectStack?.map((stack, index) => (
+                      <li key={stack._key ?? index} className="type-body">
                         {stack.technology}
                       </li>
                     ))}
@@ -90,7 +99,7 @@ export default async function Home() {
                 {project.firstImage?.asset?.url && (
                   <Image
                     src={project.firstImage.asset.url}
-                    alt={project.firstImage.alt || project.name}
+                    alt={project.firstImage.alt || ""}
                     width={800}
                     height={600}
                     className="home-first-image"
@@ -101,7 +110,7 @@ export default async function Home() {
                 {project.secondImage?.asset?.url && (
                   <Image
                     src={project.secondImage.asset.url}
-                    alt={project.secondImage.alt || project.name}
+                    alt={project.secondImage.alt || ""}
                     width={800}
                     height={600}
                     className="home-second-image"
