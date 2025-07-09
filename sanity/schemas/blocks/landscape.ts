@@ -1,29 +1,30 @@
 import { defineField, defineType } from "sanity";
 
-export const work = defineType({
-  name: "work",
-  title: "Work Page",
-  type: "document",
+export const landscape = defineType({
+  name: "landscape",
+  type: "object",
   fields: [
     defineField({
       name: "title",
-      title: "Title",
+      title: "Module Title",
       type: "string",
     }),
     defineField({
-      name: "description",
-      title: "Description",
-      type: "text",
-    }),
-    defineField({
       name: "image",
-      title: "Image",
       type: "image",
+      options: {
+        hotspot: true,
+      },
       fields: [
+        defineField({
+          name: "caption",
+          type: "string",
+        }),
         defineField({
           name: "alt",
           type: "string",
           title: "Alternative text",
+          description: "Important for SEO and accessibility.",
         }),
       ],
     }),

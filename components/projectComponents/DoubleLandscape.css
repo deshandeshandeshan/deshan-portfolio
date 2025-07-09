@@ -1,0 +1,38 @@
+.double-landscape {
+  padding: 16px;
+}
+
+.left-image {
+  grid-column: 1 / 4;
+  grid-row: 1 / 2;
+}
+
+.right-image {
+  grid-column: 4 / 7;
+  grid-row: 1 / 2;
+}
+
+.left-img {
+  aspect-ratio: 5 / 4;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.right-img {
+  aspect-ratio: 5 / 4;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+@media screen and (min-width: 480px) {
+  .left-image {
+    grid-column: 1 / 13;
+    grid-row: 1 / 2;
+  }
+
+  .right-image {
+    grid-column: 13 / 25;
+    grid-row: 1 / 2;
+  }
+}

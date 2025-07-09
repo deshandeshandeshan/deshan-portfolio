@@ -1,20 +1,13 @@
 import { defineField, defineType } from "sanity";
 
-export const project = defineType({
-  name: "project",
-  title: "Projects",
-  type: "document",
+export const projectDetails = defineType({
+  name: "projectDetails",
+  type: "object",
   fields: [
     defineField({
-      name: "name",
-      title: "Name",
+      name: "title",
+      title: "Title",
       type: "string",
-    }),
-    defineField({
-      name: "slug",
-      title: "Slug",
-      type: "slug",
-      options: { source: "name" },
     }),
     defineField({
       name: "description",
@@ -80,34 +73,6 @@ export const project = defineType({
           ],
         }),
       ],
-    }),
-    defineField({
-      name: "firstImage",
-      title: "First Image",
-      type: "image",
-      fields: [
-        defineField({
-          name: "alt",
-          type: "string",
-          title: "Alternative text",
-        }),
-      ],
-    }),
-    defineField({
-      name: "secondImage",
-      title: "Second Image",
-      type: "image",
-      fields: [
-        defineField({
-          name: "alt",
-          type: "string",
-          title: "Alternative text",
-        }),
-      ],
-    }),
-    defineField({
-      name: "content",
-      type: "pageBuilder",
     }),
   ],
 });

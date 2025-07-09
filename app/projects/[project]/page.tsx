@@ -1,4 +1,6 @@
+import { PageBuilder } from "@/components/PageBuilder";
 import { getProject } from "@/sanity/sanity-utils";
+import { notFound } from "next/navigation";
 
 type Props = {
   params: {
@@ -10,5 +12,15 @@ export default async function Project({ params }: Props) {
   const slug = params.project;
   const project = await getProject(slug);
 
-  return <div>{project.name}</div>;
+  console.log(project);
+
+  if (!project) {
+    notFound();
+  }
+
+  return project?.content ? (
+    <div>
+      <PageBuilder content={project.content} />
+    </div>
+  ) : null;
 }
