@@ -1,0 +1,45 @@
+.details {
+  padding: 16px;
+}
+
+.project-title {
+  grid-column: 1 / 7;
+  grid-row: 1 / 2;
+}
+
+.project-description {
+  grid-column: 1 / 7;
+  grid-row: 2 / 3;
+}
+
+.first-project-details {
+  grid-column: 1 / 7;
+  grid-row: 3 / 4;
+}
+
+.second-project-details {
+  grid-column: 1 / 7;
+  grid-row: 4 / 5;
+}
+
+@media screen and (min-width: 480px) {
+  .project-title {
+    grid-column: 1 / 13;
+    grid-row: 1 / 2;
+  }
+
+  .project-description {
+    grid-column: 13 / 25;
+    grid-row: 1 / 2;
+  }
+
+  .first-project-details {
+    grid-column: 19 / 25;
+    grid-row: 2 / 3;
+  }
+
+  .second-project-details {
+    grid-column: 19 / 25;
+    grid-row: 3 / 4;
+  }
+}
