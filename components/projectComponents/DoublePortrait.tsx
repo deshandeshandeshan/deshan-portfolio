@@ -12,7 +12,7 @@ type doublePortraitProps = Extract<
 
 export function DoublePortrait({ leftImage, rightImage }: doublePortraitProps) {
   return (
-    <section className="double-portrait mobile-padding">
+    <section className="double-portrait">
       <div className="images grid">
         <div className="left-portrait-image">
           {leftImage ? (

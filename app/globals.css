@@ -39,6 +39,12 @@ a {
   color: inherit;
 }
 
+.page-builder {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 /* Text Colours */
 
 .text-black {

@@ -14,11 +14,14 @@ type PageBuilderProps = {
   className?: string;
 };
 
-export function PageBuilder({ content }: PageBuilderProps) {
+export function PageBuilder({
+  content,
+  className = "page-builder",
+}: PageBuilderProps) {
   if (!Array.isArray(content)) return null;
 
   return (
-    <main>
+    <main className={className}>
       {content.map((block) => {
         switch (block._type) {
           case "doubleLandscape":

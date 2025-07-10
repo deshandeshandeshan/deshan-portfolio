@@ -17,13 +17,13 @@ export function ProjectDetails({
   projectStack,
 }: projectDetailsProps) {
   return (
-    <section className="project-details">
+    <section className="project-details mobile-padding">
       <div className="details grid">
         <h2 className="project-title type-sub spacing-4">{title}</h2>
         <p className="project-description type-body spacing-16 text-grey spacing-64">
           {description}
         </p>
-        <div className="first-project-details spacing-12">
+        <div className="first-details spacing-12">
           <div className="spacing-12">
             <h3 className="type-body-bold">Live Site</h3>
             <a href={liveSite?.liveSite ?? ""} className="type-body text-grey">
@@ -41,7 +41,7 @@ export function ProjectDetails({
             </ul>
           </div>
         </div>
-        <div className="second-project-details">
+        <div className="second-details">
           <div className="spacing-12">
             <h3 className="type-body-bold">Published</h3>
             <p className="type-body text-grey">{year}</p>

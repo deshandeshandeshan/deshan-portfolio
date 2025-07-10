@@ -15,7 +15,7 @@ export function DoubleLandscape({
   rightImage,
 }: doubleLandscapeProps) {
   return (
-    <section className="double-landscape">
+    <section className="double-landscape mobile-padding">
       <div className="images grid">
         <div className="left-image">
           {leftImage ? (
