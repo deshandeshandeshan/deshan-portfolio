@@ -113,6 +113,7 @@ export const CONTACT_QUERY = defineQuery(`
     },
     socialLinks[] {
       _key,
+      linkName,
       link
     }
   }

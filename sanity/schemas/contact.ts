@@ -50,6 +50,11 @@ export const contact = defineType({
           type: "object",
           fields: [
             defineField({
+              name: "linkName",
+              title: "Link Name",
+              type: "string",
+            }),
+            defineField({
               name: "link",
               title: "Link",
               type: "url",

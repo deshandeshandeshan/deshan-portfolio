@@ -5,28 +5,21 @@ import React, { useState, useRef, useEffect } from "react";
 
 import "./nav.css";
 
+type Props = {
+  contactInfo: Contact;
+};
+
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import { getContact } from "@/sanity/sanity-utils";
+import Image from "next/image";
+import { urlFor } from "@/sanity/lib/image";
 import { Contact } from "@/sanity/types";
 
-const Nav = () => {
-  const container = useRef();
-  const [isClient, setIsClient] = useState(false);
-  const [routerPath, setRouterPath] = useState<string>("");
+const Nav = ({ contactInfo }: Props) => {
+  const container = useRef<HTMLDivElement | null>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [contactInfo, setContactInfo] = useState<Contact | null>(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getContact();
-      setContactInfo(data);
-    };
-
-    fetchData();
-  }, []);
-
-  const tl = useRef();
+  const tl = useRef<gsap.core.Timeline | null>(null);
 
   const toggleNav = () => {
     setIsOpen(!isOpen);
@@ -48,19 +41,14 @@ const Nav = () => {
   );
 
   useEffect(() => {
+    if (!tl.current) return;
+
     if (isOpen) {
       tl.current.play();
     } else {
       tl.current.reverse();
     }
   }, [isOpen]);
-
-  useEffect(() => {
-    setIsClient(true);
-    setRouterPath(window.location.pathname);
-  }, []);
-
-  if (!isClient || routerPath.includes("/admin")) return null;
 
   return (
     <nav className="nav-container" ref={container}>
@@ -89,7 +77,22 @@ const Nav = () => {
           </ul>
         </div>
         <div className="nav-overlay-content">
-          <div>{contactInfo}</div>
+          <div className="contact-description">{contactInfo?.description}</div>
+          <div className="contact-image">
+            {contactInfo?.contactImage ? (
+              <Image
+                src={urlFor(contactInfo?.contactImage)
+                  .auto("format")
+                  .quality(90)
+                  .url()}
+                alt={""}
+                width={2160}
+                height={3840}
+                className="contact-imag"
+              />
+            ) : null}
+          </div>
+          <div></div>
         </div>
       </div>
     </nav>

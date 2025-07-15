@@ -15,6 +15,7 @@ export interface Contact {
   };
   socialLinks: Array<{
     _key: string;
+    linkName: string;
     link: string;
   }>;
 }

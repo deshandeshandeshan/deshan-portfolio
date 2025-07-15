@@ -1411,6 +1411,13 @@
           "of": {
             "type": "object",
             "attributes": {
+              "linkName": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string"
+                },
+                "optional": true
+              },
               "link": {
                 "type": "objectAttribute",
                 "value": {
