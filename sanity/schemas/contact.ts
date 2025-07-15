@@ -6,6 +6,18 @@ export const contact = defineType({
   type: "document",
   fields: [
     defineField({
+      name: "contactImage",
+      title: "Contact Image",
+      type: "image",
+      fields: [
+        defineField({
+          name: "alt",
+          type: "string",
+          title: "Alternative text",
+        }),
+      ],
+    }),
+    defineField({
       name: "description",
       title: "Description",
       type: "text",
@@ -13,24 +25,17 @@ export const contact = defineType({
     defineField({
       name: "contacts",
       title: "Contacts",
-      type: "array",
-      of: [
+      type: "object",
+      fields: [
         defineField({
-          name: "Contact",
-          title: "Contact",
-          type: "object",
-          fields: [
-            defineField({
-              name: "email",
-              title: "Email",
-              type: "url",
-            }),
-            defineField({
-              name: "phoneNumber",
-              title: "Phone Number",
-              type: "number",
-            }),
-          ],
+          name: "email",
+          title: "Email",
+          type: "email",
+        }),
+        defineField({
+          name: "phoneNumber",
+          title: "Phone Number",
+          type: "number",
         }),
       ],
     }),

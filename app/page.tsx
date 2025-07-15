@@ -9,6 +9,7 @@ import { urlFor } from "@/sanity/lib/image";
 export default async function Home() {
   const projects = await getProjects();
   const work = await getWork();
+
   return (
     <main className="home-page">
       <div className="landing-content">

@@ -1,14 +1,25 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import "./footer.css";
 
 const Footer = () => {
+  const [isClient, setIsClient] = useState(false);
+  const [routerPath, setRouterPath] = useState<string>("");
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth", // for smooth scrolling
     });
   };
+
+  useEffect(() => {
+    setIsClient(true);
+    setRouterPath(window.location.pathname);
+  }, []);
+
+  if (!isClient || routerPath.includes("/admin")) return null;
 
   return (
     <footer className="footer">
