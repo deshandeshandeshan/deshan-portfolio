@@ -1,3 +1,7 @@
+.landing-content-header {
+  grid-column: 1 / 7;
+}
+
 .header-title {
   grid-column: 1 / 7;
   grid-row: 2 / 3;
@@ -107,7 +111,7 @@
   }
 
   .header-description {
-    grid-column: 1 / 12;
+    grid-column: 1 / 8;
     grid-row: 3 / 4;
     padding: 0px 0px 0px 16px;
   }
@@ -132,6 +136,7 @@
   .landing-content-header {
     grid-column: 1 / 24;
     grid-row: 1 / 2;
+    padding-top: 180px;
   }
 
   .landing-content-container {

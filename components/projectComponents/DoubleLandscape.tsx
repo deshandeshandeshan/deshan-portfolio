@@ -21,7 +21,7 @@ export function DoubleLandscape({
           {leftImage ? (
             <Image
               src={urlFor(leftImage).auto("format").quality(90).url()}
-              alt={""}
+              alt={leftImage?.alt ?? ""}
               width={2160}
               height={3840}
               className="left-img"
@@ -32,7 +32,7 @@ export function DoubleLandscape({
           {rightImage ? (
             <Image
               src={urlFor(rightImage).auto("format").quality(90).url()}
-              alt={""}
+              alt={rightImage?.alt ?? ""}
               width={2160}
               height={3840}
               className="right-img"

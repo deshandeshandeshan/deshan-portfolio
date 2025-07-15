@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
 
 import "./nav.css";
+import "@/app/grid.css";
 
 type Props = {
   contactInfo: Contact;
@@ -32,8 +33,8 @@ const Nav = ({ contactInfo }: Props) => {
           paused: true,
         })
         .to(".nav-overlay", {
-          duration: 2,
-          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+          duration: 1.2,
+          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
           ease: "power4.inOut",
         });
     },
@@ -76,8 +77,12 @@ const Nav = ({ contactInfo }: Props) => {
             </li>
           </ul>
         </div>
-        <div className="nav-overlay-content">
-          <div className="contact-description">{contactInfo?.description}</div>
+        <div className="nav-overlay-content grid">
+          <div className="contact-description type-sub">
+            <div className="contact-description-holder">
+              {contactInfo?.description}
+            </div>
+          </div>
           <div className="contact-image">
             {contactInfo?.contactImage ? (
               <Image
@@ -85,14 +90,46 @@ const Nav = ({ contactInfo }: Props) => {
                   .auto("format")
                   .quality(90)
                   .url()}
-                alt={""}
+                alt={contactInfo?.contactImage?.alt ?? "Contact image"}
                 width={2160}
                 height={3840}
-                className="contact-imag"
+                className="contact-img"
               />
             ) : null}
           </div>
-          <div></div>
+          <div>
+            <ul>
+              <h3 className="">Contact</h3>
+              <li>
+                <a
+                  href={`mailto:${contactInfo.contacts?.email}`}
+                  target="_blank"
+                >
+                  DESHAN.MCLACHLAN@GMAIL.COM{" "}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`tel:${contactInfo.contacts?.phoneNumber}`}
+                  target="_blank"
+                >
+                  {contactInfo.contacts?.phoneNumber}
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <ul>
+              <h3>Socials</h3>
+              {contactInfo.socialLinks?.map((socialLink, index) => (
+                <li key={index}>
+                  <a href={socialLink.link} target="_blank">
+                    {socialLink.linkName}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </nav>

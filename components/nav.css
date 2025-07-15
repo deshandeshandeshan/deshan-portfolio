@@ -31,3 +31,35 @@
 .close {
   cursor: pointer;
 }
+
+.nav-overlay-content {
+  padding: 16px;
+}
+
+.contact-image {
+  display: none;
+}
+
+.contact-description {
+  grid-column: 1 / 7;
+  grid-row: 1 / 2;
+}
+
+@media screen and (min-width: 480px) {
+  .contact-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .contact-description {
+    grid-column: 1 / 15;
+    grid-row: 1 / 2;
+  }
+
+  .contact-image {
+    grid-column: 16 / 25;
+    grid-row: 1 / 2;
+    display: flex;
+  }
+}
