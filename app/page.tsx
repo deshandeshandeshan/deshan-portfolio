@@ -45,10 +45,10 @@ export default async function Home() {
           <li className="project" key={project._id}>
             <div className="home-project grid">
               <div className="home-project-details spacing-64">
-                <h2 className="project-title type-sub spacing-4">
+                <h2 className="home-project-title type-sub spacing-4">
                   {project.name}
                 </h2>
-                <p className="project-title type-body spacing-16 text-grey">
+                <p className="home-project-description type-body spacing-16 text-grey">
                   {project.description}
                 </p>
                 <Link
@@ -100,25 +100,14 @@ export default async function Home() {
                   </ul>
                 </div>
               </div>
-              <div className="home-first-image-wrapper">
+              <div className="home-image-wrapper">
                 {project.firstImage?.asset?.url && (
                   <Image
                     src={project.firstImage.asset.url}
                     alt={project.firstImage.alt || ""}
                     width={800}
                     height={600}
-                    className="home-first-image"
-                  />
-                )}
-              </div>
-              <div className="home-second-image-wrapper">
-                {project.secondImage?.asset?.url && (
-                  <Image
-                    src={project.secondImage.asset.url}
-                    alt={project.secondImage.alt || ""}
-                    width={800}
-                    height={600}
-                    className="home-second-image"
+                    className="home-image"
                   />
                 )}
               </div>
