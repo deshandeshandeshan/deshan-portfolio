@@ -44,8 +44,6 @@
 
 .home-project {
   padding: 16px 16px;
-  display: flex;
-  flex-direction: column;
 }
 
 .home-image-wrapper {
@@ -146,8 +144,6 @@
 
   .home-project {
     padding: 16px 16px;
-    display: flex;
-    flex-direction: column;
   }
 
   .home-image-wrapper {
