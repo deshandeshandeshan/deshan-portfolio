@@ -58,8 +58,8 @@
   }
 
   .contact-image {
-    grid-column: 16 / 25;
-    grid-row: 1 / 2;
+    grid-column: 18 / 25;
+    grid-row: 1 / 4;
     display: flex;
   }
 }

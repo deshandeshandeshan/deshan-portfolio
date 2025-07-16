@@ -20,7 +20,7 @@ export function ProjectDetails({
     <section className="project-details mobile-padding">
       <div className="details grid">
         <h2 className="project-title type-sub spacing-4">{title}</h2>
-        <p className="project-description type-body spacing-16 text-grey spacing-64">
+        <p className="project-description type-sub text-grey spacing-64">
           {description}
         </p>
         <div className="first-details spacing-12">

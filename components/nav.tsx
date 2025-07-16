@@ -60,7 +60,10 @@ const Nav = ({ contactInfo }: Props) => {
               WORK
             </Link>
           </li>
-          <li className="contact type-heading contact-open" onClick={toggleNav}>
+          <li
+            className="contact type-heading contact-open link"
+            onClick={toggleNav}
+          >
             CONTACT
           </li>
         </ul>
@@ -70,7 +73,7 @@ const Nav = ({ contactInfo }: Props) => {
           <ul className="nav-overlay-list">
             <li className="work-link type-heading">DESHAN MCLACHLAN</li>
             <li
-              className="close type-heading contact-close"
+              className="close type-heading contact-close link"
               onClick={toggleNav}
             >
               CLOSE
@@ -78,11 +81,6 @@ const Nav = ({ contactInfo }: Props) => {
           </ul>
         </div>
         <div className="nav-overlay-content grid">
-          <div className="contact-description type-sub">
-            <div className="contact-description-holder">
-              {contactInfo?.description}
-            </div>
-          </div>
           <div className="contact-image">
             {contactInfo?.contactImage ? (
               <Image
@@ -97,38 +95,45 @@ const Nav = ({ contactInfo }: Props) => {
               />
             ) : null}
           </div>
-          <div>
-            <ul>
-              <h3 className="">Contact</h3>
-              <li>
-                <a
-                  href={`mailto:${contactInfo.contacts?.email}`}
-                  target="_blank"
-                >
-                  DESHAN.MCLACHLAN@GMAIL.COM{" "}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`tel:${contactInfo.contacts?.phoneNumber}`}
-                  target="_blank"
-                >
-                  {contactInfo.contacts?.phoneNumber}
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <ul>
-              <h3>Socials</h3>
-              {contactInfo.socialLinks?.map((socialLink, index) => (
-                <li key={index}>
-                  <a href={socialLink.link} target="_blank">
-                    {socialLink.linkName}
+          <div className="contact-description">
+            <div className="type-sub spacing-80">
+              <div className="contact-description-holder">
+                {contactInfo?.description}
+              </div>
+            </div>
+            <div className="contact-details spacing-24">
+              <ul>
+                <h3 className="type-body-bold">Contact</h3>
+                <li className="type-body">
+                  <a
+                    href={`mailto:${contactInfo.contacts?.email}`}
+                    target="_blank"
+                  >
+                    DESHAN.MCLACHLAN@GMAIL.COM{" "}
                   </a>
                 </li>
-              ))}
-            </ul>
+                <li className="type-body">
+                  <a
+                    href={`tel:${contactInfo.contacts?.phoneNumber}`}
+                    target="_blank"
+                  >
+                    (+61) 460 968 922
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div className="social-links">
+              <ul>
+                <h3 className="type-body-bold">Socials</h3>
+                {contactInfo.socialLinks?.map((socialLink, index) => (
+                  <li key={index} className="type-body">
+                    <a href={socialLink.link} target="_blank">
+                      {socialLink.linkName}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
