@@ -12,13 +12,13 @@ type doublePortraitProps = Extract<
 
 export function DoublePortrait({ leftImage, rightImage }: doublePortraitProps) {
   return (
-    <section className="double-portrait mobile-padding">
+    <section className="double-portrait">
       <div className="images grid">
         <div className="left-portrait-image">
           {leftImage ? (
             <Image
               src={urlFor(leftImage).auto("format").quality(90).url()}
-              alt={""}
+              alt={leftImage?.alt ?? ""}
               width={2160}
               height={3840}
               className="left-portrait-img"
@@ -29,7 +29,7 @@ export function DoublePortrait({ leftImage, rightImage }: doublePortraitProps) {
           {rightImage ? (
             <Image
               src={urlFor(rightImage).auto("format").quality(90).url()}
-              alt={""}
+              alt={rightImage?.alt ?? ""}
               width={2160}
               height={3840}
               className="right-portrait-img"

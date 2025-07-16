@@ -94,3 +94,27 @@ export const WORK_QUERY = defineQuery(`
     }
   }
 `);
+
+export const CONTACT_QUERY = defineQuery(`
+  *[_type == "contact"][0]{
+    _id,
+    _createdAt,
+    description,
+    contactImage {
+      alt,
+      asset->{
+        _id,
+        url
+      }
+    },
+    contacts {
+      email,
+      phoneNumber
+    },
+    socialLinks[] {
+      _key,
+      linkName,
+      link
+    }
+  }
+`);

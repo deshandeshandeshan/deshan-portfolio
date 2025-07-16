@@ -4,10 +4,12 @@ import Image from "next/image";
 
 import "./page.css";
 import "./grid.css";
+import { urlFor } from "@/sanity/lib/image";
 
 export default async function Home() {
   const projects = await getProjects();
   const work = await getWork();
+
   return (
     <main className="home-page">
       <div className="landing-content">
@@ -23,10 +25,13 @@ export default async function Home() {
           </div>
           {work?.image?.asset?.url && (
             <Image
-              src={work?.image?.asset?.url}
+              src={urlFor(work?.image?.asset?.url)
+                .auto("format")
+                .quality(90)
+                .url()}
               alt={work?.image?.alt || ""}
               width={800}
-              height={600}
+              height={1200}
               className="header-image"
             />
           )}
@@ -35,7 +40,7 @@ export default async function Home() {
       <div className="work-projects-container">
         <h2 className="work-projects type-heading">PROJECTS</h2>
       </div>
-      <ul className="home-projects-list spacing-120">
+      <ul className="home-projects-list">
         {projects.map((project) => (
           <li className="project" key={project._id}>
             <div className="home-project grid">
