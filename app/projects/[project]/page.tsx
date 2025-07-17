@@ -2,6 +2,8 @@ import { PageBuilder } from "@/components/PageBuilder";
 import { getProject } from "@/sanity/sanity-utils";
 import { notFound } from "next/navigation";
 
+export const revalidate = 5;
+
 type Props = {
   params: Promise<{ project: string }>;
 };
