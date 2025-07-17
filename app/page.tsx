@@ -2,6 +2,8 @@ import { getProjects, getWork } from "@/sanity/sanity-utils";
 import Link from "next/link";
 import Image from "next/image";
 
+export const revalidate = 5;
+
 import "./page.css";
 import "./grid.css";
 import { urlFor } from "@/sanity/lib/image";
