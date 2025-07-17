@@ -32,8 +32,8 @@ export default async function Home() {
                 .quality(90)
                 .url()}
               alt={work?.image?.alt || ""}
-              width={800}
-              height={1200}
+              width={3840}
+              height={3840}
               className="header-image"
             />
           )}
@@ -105,9 +105,12 @@ export default async function Home() {
               <div className="home-image-wrapper">
                 {project.firstImage?.asset?.url && (
                   <Image
-                    src={project.firstImage.asset.url}
-                    alt={project.firstImage.alt || ""}
-                    width={800}
+                    src={urlFor(project.firstImage?.asset?.url)
+                      .auto("format")
+                      .quality(90)
+                      .url()}
+                    alt={project.firstImage?.alt ?? ""}
+                    width={3840}
                     height={600}
                     className="home-image"
                   />
