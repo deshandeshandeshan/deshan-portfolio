@@ -18,7 +18,7 @@ export function Landscape({ image }: landscapeProps) {
           <Image
             src={urlFor(image).auto("format").quality(90).url()}
             alt={image?.alt ?? ""}
-            width={2160}
+            width={3840}
             height={3840}
             className="landscape-img"
           />
