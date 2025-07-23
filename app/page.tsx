@@ -65,7 +65,7 @@ export default async function Home() {
                   <h3 className="type-body-bold">Live Site</h3>
                   <a
                     href={project.liveSite?.liveSite ?? ""}
-                    className="type-body text-grey"
+                    className="type-body text-grey website-link"
                   >
                     {project.liveSite?.liveSiteTitle}
                   </a>

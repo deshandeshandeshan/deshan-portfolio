@@ -26,7 +26,10 @@ export function ProjectDetails({
         <div className="first-details spacing-12">
           <div className="spacing-12">
             <h3 className="type-body-bold">Live Site</h3>
-            <a href={liveSite?.liveSite ?? ""} className="type-body text-grey">
+            <a
+              href={liveSite?.liveSite ?? ""}
+              className="type-body text-grey website-link"
+            >
               {liveSite?.liveSiteTitle}
             </a>
           </div>
