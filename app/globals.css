@@ -54,6 +54,15 @@ a:hover {
   transition: all 0.2s ease-in-out;
 }
 
+.website-link {
+  transition: all 0.2s ease-in-out;
+}
+
+.website-link:hover {
+  color: #414242;
+  transition: all 0.2s ease-in-out;
+}
+
 .page-builder {
   display: flex;
   flex-direction: column;
