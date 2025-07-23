@@ -1,23 +1,25 @@
 .left-portrait-image {
   grid-column: 1 / 4;
   grid-row: 1 / 2;
+  cursor: pointer;
 }
 
 .right-portrait-image {
   grid-column: 4 / 7;
   grid-row: 1 / 2;
+  cursor: pointer;
 }
 
 .left-portrait-img {
   aspect-ratio: 3 / 4;
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
 }
 .right-portrait-img {
   aspect-ratio: 3 / 4;
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
 }
 

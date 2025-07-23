@@ -66,7 +66,7 @@ a:hover {
 .page-builder {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
 }
 
 /* Text Colours */
@@ -243,5 +243,11 @@ a:hover {
   .type-details-regular {
     font-size: 11px;
     line-height: 13px;
+  }
+
+  .page-builder {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 }
