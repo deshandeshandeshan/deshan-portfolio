@@ -24,7 +24,7 @@ export function DoubleLandscape({
   } | null>(null);
 
   return (
-    <section className="double-landscape mobile-padding">
+    <section className="double-landscape">
       <div className="images grid">
         <div className="left-image">
           {leftImage ? (

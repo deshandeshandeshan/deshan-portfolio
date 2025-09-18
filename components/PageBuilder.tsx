@@ -16,7 +16,7 @@ type PageBuilderProps = {
 
 export function PageBuilder({
   content,
-  className = "page-builder",
+  className = "page-builder desktop-padding",
 }: PageBuilderProps) {
   if (!Array.isArray(content)) return null;
 

@@ -250,4 +250,8 @@ a:hover {
     flex-direction: column;
     gap: 16px;
   }
+
+  .desktop-padding {
+    padding: 0 20%;
+  }
 }

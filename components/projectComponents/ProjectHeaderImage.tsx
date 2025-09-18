@@ -12,20 +12,18 @@ type projectHeaderImageProps = Extract<
 
 export function ProjectHeaderImage({ image }: projectHeaderImageProps) {
   return (
-    <main>
-      <section className="project-header grid">
-        <div className="project-header-image">
-          {image ? (
-            <Image
-              src={urlFor(image).auto("format").quality(90).url()}
-              alt={image?.alt ?? ""}
-              width={3840}
-              height={3840}
-              className="project-header-img"
-            />
-          ) : null}
-        </div>
-      </section>
-    </main>
+    <section className="project-header grid">
+      <div className="project-header-image">
+        {image ? (
+          <Image
+            src={urlFor(image).auto("format").quality(90).url()}
+            alt={image?.alt ?? ""}
+            width={3840}
+            height={3840}
+            className="project-header-img"
+          />
+        ) : null}
+      </div>
+    </section>
   );
 }
