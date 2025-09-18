@@ -17,7 +17,7 @@ export function ProjectDetails({
   projectStack,
 }: projectDetailsProps) {
   return (
-    <section className="project-details mobile-padding">
+    <section className="project-details ">
       <div className="details grid">
         <h2 className="project-title type-sub spacing-4">{title}</h2>
         <p className="project-description type-body text-grey spacing-64">

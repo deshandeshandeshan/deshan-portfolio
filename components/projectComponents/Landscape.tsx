@@ -21,7 +21,7 @@ export function Landscape({ image }: landscapeProps) {
   } | null>(null);
 
   return (
-    <section className="landscape grid mobile-padding">
+    <section className="landscape grid">
       <div className="landscape-image">
         {image ? (
           <Image
