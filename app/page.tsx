@@ -14,17 +14,24 @@ export default async function Home() {
 
   return (
     <main className="home-page">
-      <div className="landing-content">
-        <div className="landing-content-container grid">
-          <div className="landing-content-header grid">
-            <h1 className="header-title type-heading">
-              {work?.title ?? "Untitled"}
-            </h1>
-            <hr className="full-bleed-divider" />
-            <p className="header-description type-body text-grey">
-              {work?.description ?? "No description available."}
-            </p>
-          </div>
+      <div className="landing-content landing-content-grid mobile-padding">
+        <h1 className="landing-content-title type-title">
+          {work?.title ?? "Untitled"}
+        </h1>
+        <hr className="full-bleed-divider" />
+        <div className="landing-content-job-description type-details-regular text-grey">
+          Web Developer & Digital Designer
+        </div>
+        <div className="landing-content-location type-details-regular text-grey">
+          Melbourne
+        </div>
+        <div className="landing-content-open-to-work type-details-regular text-grey">
+          Open to Work
+        </div>
+        <p className="landing-content-description type-body">
+          {work?.description ?? "No description available."}
+        </p>
+        <div className="landing-content-image-container">
           {work?.image?.asset?.url && (
             <Image
               src={urlFor(work?.image?.asset?.url)
@@ -34,15 +41,16 @@ export default async function Home() {
               alt={work?.image?.alt || ""}
               width={3840}
               height={3840}
-              className="header-image"
+              className="landing-content-image"
             />
           )}
         </div>
+        <div className="landing-content-info-container">
+          <h3 className="info-years-working type-heading">2022 - 2025</h3>
+          <h3 className="info-projects type-heading">PROJECTS &#8600;</h3>
+        </div>
       </div>
-      <div className="work-projects-container">
-        <h2 className="work-projects type-heading">PROJECTS</h2>
-      </div>
-      <ul className="home-projects-list">
+      <ul className="home-projects-list mobile-padding">
         {projects.map((project) => (
           <li className="project" key={project._id}>
             <div className="home-project grid">
