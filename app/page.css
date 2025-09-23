@@ -250,7 +250,7 @@
     display: block;
     aspect-ratio: 3 / 2;
     object-fit: cover;
-    padding: 16px 16px 16px 0;
+    padding: 16px 0;
   }
 
   .first-project-details {
