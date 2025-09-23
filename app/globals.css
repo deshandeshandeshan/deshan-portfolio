@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   font-family: "Inter", sans-serif;
 }
@@ -241,7 +245,7 @@ a:hover {
   }
 
   .type-details-regular {
-    font-size: 11px;
+    font-size: 12px;
     line-height: 13px;
   }
 
