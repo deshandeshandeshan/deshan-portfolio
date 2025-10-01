@@ -213,6 +213,7 @@ export type Work = {
   _rev: string;
   title?: string;
   description?: string;
+  video?: MuxVideo;
   image?: {
     asset?: {
       _ref: string;
@@ -284,20 +285,8 @@ export type Project = {
     _type: "stack";
     _key: string;
   }>;
-  firstImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  };
-  secondImage?: {
+  video?: MuxVideo;
+  projectImage?: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -376,11 +365,94 @@ export type Slug = {
   source?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | ProjectHeaderImage | ProjectDetails | Landscape | DoubleLandscape | DoublePortrait | PageBuilder | Work | Contact | Project | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
+export type MuxVideo = {
+  _type: "mux.video";
+  asset?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "mux.videoAsset";
+  };
+};
+
+export type MuxVideoAsset = {
+  _id: string;
+  _type: "mux.videoAsset";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  status?: string;
+  assetId?: string;
+  playbackId?: string;
+  filename?: string;
+  thumbTime?: number;
+  data?: MuxAssetData;
+};
+
+export type MuxAssetData = {
+  _type: "mux.assetData";
+  resolution_tier?: string;
+  upload_id?: string;
+  created_at?: string;
+  id?: string;
+  status?: string;
+  max_stored_resolution?: string;
+  passthrough?: string;
+  encoding_tier?: string;
+  master_access?: string;
+  aspect_ratio?: string;
+  duration?: number;
+  max_stored_frame_rate?: number;
+  mp4_support?: string;
+  max_resolution_tier?: string;
+  tracks?: Array<{
+    _key: string;
+  } & MuxTrack>;
+  playback_ids?: Array<{
+    _key: string;
+  } & MuxPlaybackId>;
+  static_renditions?: MuxStaticRenditions;
+};
+
+export type MuxStaticRenditions = {
+  _type: "mux.staticRenditions";
+  status?: string;
+  files?: Array<{
+    _key: string;
+  } & MuxStaticRenditionFile>;
+};
+
+export type MuxStaticRenditionFile = {
+  _type: "mux.staticRenditionFile";
+  ext?: string;
+  name?: string;
+  width?: number;
+  bitrate?: number;
+  filesize?: number;
+  height?: number;
+};
+
+export type MuxPlaybackId = {
+  _type: "mux.playbackId";
+  id?: string;
+  policy?: string;
+};
+
+export type MuxTrack = {
+  _type: "mux.track";
+  id?: string;
+  type?: string;
+  max_width?: number;
+  max_frame_rate?: number;
+  duration?: number;
+  max_height?: number;
+};
+
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | ProjectHeaderImage | ProjectDetails | Landscape | DoubleLandscape | DoublePortrait | PageBuilder | Work | Contact | Project | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug | MuxVideo | MuxVideoAsset | MuxAssetData | MuxStaticRenditions | MuxStaticRenditionFile | MuxPlaybackId | MuxTrack;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity/lib/queries.ts
 // Variable: PROJECTS_QUERY
-// Query: *[_type == "project"]{    _id,    _createdAt,    name,    year,    description,    "slug": slug.current,    firstImage {      alt,      asset->{        _id,        url      }    },    secondImage {      alt,      asset->{        _id,        url      }    },    liveSite {      liveSite,      liveSiteTitle    },    projectDeliverables[] {      _key,      deliverable    },    projectStack[] {      _key,      technology    }  }
+// Query: *[_type == "project"]{    _id,    _createdAt,    name,    year,    description,    "slug": slug.current,    video {      asset-> {        playbackId,        assetId,        filename      }    },    projectImage {      alt,      asset->{        _id,        url      }    },    liveSite {      liveSite,      liveSiteTitle    },    projectDeliverables[] {      _key,      deliverable    },    projectStack[] {      _key,      technology    }  }
 export type PROJECTS_QUERYResult = Array<{
   _id: string;
   _createdAt: string;
@@ -388,14 +460,14 @@ export type PROJECTS_QUERYResult = Array<{
   year: string | null;
   description: string | null;
   slug: string | null;
-  firstImage: {
-    alt: string | null;
+  video: {
     asset: {
-      _id: string;
-      url: string | null;
+      playbackId: string | null;
+      assetId: string | null;
+      filename: string | null;
     } | null;
   } | null;
-  secondImage: {
+  projectImage: {
     alt: string | null;
     asset: {
       _id: string;
@@ -503,12 +575,19 @@ export type SINGLE_PROJECT_QUERYResult = {
   }> | null;
 } | null;
 // Variable: WORK_QUERY
-// Query: *[_type == "work"][0]{    _id,    _createdAt,    title,    description,    image {      alt,      asset->{        _id,        url      }    }  }
+// Query: *[_type == "work"][0]{    _id,    _createdAt,    title,    description,    video {      asset-> {        playbackId,        assetId,        filename      }    },    image {      alt,      asset->{        _id,        url      }    }  }
 export type WORK_QUERYResult = {
   _id: string;
   _createdAt: string;
   title: string | null;
   description: string | null;
+  video: {
+    asset: {
+      playbackId: string | null;
+      assetId: string | null;
+      filename: string | null;
+    } | null;
+  } | null;
   image: {
     alt: string | null;
     asset: {
@@ -545,9 +624,9 @@ export type CONTACT_QUERYResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "\n  *[_type == \"project\"]{\n    _id,\n    _createdAt,\n    name,\n    year,\n    description,\n    \"slug\": slug.current,\n    firstImage {\n      alt,\n      asset->{\n        _id,\n        url\n      }\n    },\n    secondImage {\n      alt,\n      asset->{\n        _id,\n        url\n      }\n    },\n    liveSite {\n      liveSite,\n      liveSiteTitle\n    },\n    projectDeliverables[] {\n      _key,\n      deliverable\n    },\n    projectStack[] {\n      _key,\n      technology\n    }\n  }\n": PROJECTS_QUERYResult;
+    "\n  *[_type == \"project\"]{\n    _id,\n    _createdAt,\n    name,\n    year,\n    description,\n    \"slug\": slug.current,\n    video {\n      asset-> {\n        playbackId,\n        assetId,\n        filename\n      }\n    },\n    projectImage {\n      alt,\n      asset->{\n        _id,\n        url\n      }\n    },\n    liveSite {\n      liveSite,\n      liveSiteTitle\n    },\n    projectDeliverables[] {\n      _key,\n      deliverable\n    },\n    projectStack[] {\n      _key,\n      technology\n    }\n  }\n": PROJECTS_QUERYResult;
     "\n  *[_type == \"project\" && slug.current == $slug][0] {\n    _id,\n    _createdAt,\n    content[]{\n      _key,\n      _type,\n\n      _type == \"projectHeaderImage\" => {\n        title,\n        image{ alt, caption, asset->{ _id, url } }\n      },\n\n      _type == \"landscape\" => {\n        title,\n        image{ alt, caption, asset->{ _id, url } }\n      },\n\n      _type == \"doubleLandscape\" => {\n        title,\n        leftImage{ alt, caption, asset->{ _id, url } },\n        rightImage{ alt, caption, asset->{ _id, url } }\n      },\n\n      _type == \"doublePortrait\" => {\n        title,\n        leftImage{ alt, caption, asset->{ _id, url } },\n        rightImage{ alt, caption, asset->{ _id, url } }\n      },\n\n      _type == \"projectDetails\" => {\n        title,\n        description,\n        year,\n        liveSite{ liveSite, liveSiteTitle },\n        projectDeliverables[]{ deliverable },\n        projectStack[]{ technology }\n      }\n    }\n  }\n": SINGLE_PROJECT_QUERYResult;
-    "\n  *[_type == \"work\"][0]{\n    _id,\n    _createdAt,\n    title,\n    description,\n    image {\n      alt,\n      asset->{\n        _id,\n        url\n      }\n    }\n  }\n": WORK_QUERYResult;
+    "\n  *[_type == \"work\"][0]{\n    _id,\n    _createdAt,\n    title,\n    description,\n    video {\n      asset-> {\n        playbackId,\n        assetId,\n        filename\n      }\n    },\n    image {\n      alt,\n      asset->{\n        _id,\n        url\n      }\n    }\n  }\n": WORK_QUERYResult;
     "\n  *[_type == \"contact\"][0]{\n    _id,\n    _createdAt,\n    description,\n    contactImage {\n      alt,\n      asset->{\n        _id,\n        url\n      }\n    },\n    contacts {\n      email,\n      phoneNumber\n    },\n    socialLinks[] {\n      _key,\n      linkName,\n      link\n    }\n  }\n": CONTACT_QUERYResult;
   }
 }

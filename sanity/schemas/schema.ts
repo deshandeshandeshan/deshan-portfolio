@@ -82,20 +82,13 @@ export const project = defineType({
       ],
     }),
     defineField({
-      name: "firstImage",
-      title: "First Image",
-      type: "image",
-      fields: [
-        defineField({
-          name: "alt",
-          type: "string",
-          title: "Alternative text",
-        }),
-      ],
+      title: "Video file",
+      name: "video",
+      type: "mux.video",
     }),
     defineField({
-      name: "secondImage",
-      title: "Second Image",
+      name: "projectImage",
+      title: "Project Image",
       type: "image",
       fields: [
         defineField({

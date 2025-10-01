@@ -8,14 +8,14 @@ export const PROJECTS_QUERY = defineQuery(`
     year,
     description,
     "slug": slug.current,
-    firstImage {
-      alt,
-      asset->{
-        _id,
-        url
+    video {
+      asset-> {
+        playbackId,
+        assetId,
+        filename
       }
     },
-    secondImage {
+    projectImage {
       alt,
       asset->{
         _id,
@@ -85,6 +85,13 @@ export const WORK_QUERY = defineQuery(`
     _createdAt,
     title,
     description,
+    video {
+      asset-> {
+        playbackId,
+        assetId,
+        filename
+      }
+    },
     image {
       alt,
       asset->{

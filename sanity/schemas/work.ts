@@ -16,6 +16,11 @@ export const work = defineType({
       type: "text",
     }),
     defineField({
+      title: "Video file",
+      name: "video",
+      type: "mux.video",
+    }),
+    defineField({
       name: "image",
       title: "Image",
       type: "image",
