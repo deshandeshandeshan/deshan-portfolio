@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import "./HomeContent.css";
+import "./ProjectCard.css";
 import "@/app/grid.css";
 import { urlFor } from "@/sanity/lib/image";
 import { useEffect, useRef, useState } from "react";
