@@ -85,6 +85,13 @@ export const WORK_QUERY = defineQuery(`
     _createdAt,
     title,
     description,
+    video {
+      asset-> {
+        playbackId,
+        assetId,
+        filename
+      }
+    },
     image {
       alt,
       asset->{

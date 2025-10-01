@@ -1,5 +1,6 @@
 import { getProjects, getWork } from "@/sanity/sanity-utils";
 import HomeContent from "@/components/HomeContent";
+import HeaderContent from "@/components/HeaderMedia";
 
 export default async function Home() {
   const projects = await getProjects();
@@ -7,7 +8,8 @@ export default async function Home() {
 
   return (
     <main className="home-page">
-      <HomeContent projects={projects} work={work} />
+      <HeaderContent work={work} />
+      <HomeContent projects={projects} />
     </main>
   );
 }
