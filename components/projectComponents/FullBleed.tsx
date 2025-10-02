@@ -2,7 +2,7 @@ import { urlFor } from "@/sanity/lib/image";
 import { SINGLE_PROJECT_QUERYResult } from "@/sanity/types";
 import Image from "next/image";
 
-import "./fullBleed.css";
+import "./FullBleed.css";
 import "@/app/grid.css";
 
 type fullBleedProps = Extract<
