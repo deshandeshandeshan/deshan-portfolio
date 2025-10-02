@@ -2,15 +2,15 @@ import { urlFor } from "@/sanity/lib/image";
 import { SINGLE_PROJECT_QUERYResult } from "@/sanity/types";
 import Image from "next/image";
 
-import "./ProjectHeaderImage.css";
+import "./fullBleed.css";
 import "@/app/grid.css";
 
-type projectHeaderImageProps = Extract<
+type fullBleedProps = Extract<
   NonNullable<NonNullable<SINGLE_PROJECT_QUERYResult>["content"]>[number],
-  { _type: "projectHeaderImage" }
+  { _type: "fullBleed" }
 >;
 
-export function ProjectHeaderImage({ image }: projectHeaderImageProps) {
+export function FullBleed({ image }: fullBleedProps) {
   return (
     <section className="project-header grid">
       <div className="project-header-image">

@@ -7,7 +7,7 @@ export const pageBuilderType = defineType({
     defineArrayMember({ type: "doublePortrait" }),
     defineArrayMember({ type: "landscape" }),
     defineArrayMember({ type: "doubleLandscape" }),
-    defineArrayMember({ type: "projectDetails" }),
-    defineArrayMember({ type: "projectHeaderImage" }),
+    defineArrayMember({ type: "fullBleed" }),
+    defineArrayMember({ type: "portrait" }),
   ],
 });

@@ -77,11 +77,11 @@
     grid-column: 1 / 13;
     grid-row: 1 / 2;
     position: sticky;
-    top: 83px; /* header offset */
+    top: 83px;
     align-self: start;
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 83px); /* full sticky column height */
+    height: calc(100vh - 83px);
     padding-bottom: 0;
   }
 
@@ -95,7 +95,7 @@
   }
 
   .project-layout-video-wrapper {
-    width: 40%;
+    width: 32.5%;
   }
 
   .project-layout-content {

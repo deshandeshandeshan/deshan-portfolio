@@ -74,7 +74,7 @@ a:hover {
 .page-builder {
   display: flex;
   flex-direction: column;
-  gap: 80px;
+  gap: 12px;
 }
 
 /* Text Colours */
@@ -264,7 +264,7 @@ a:hover {
   .page-builder {
     display: flex;
     flex-direction: column;
-    gap: 120px;
+    gap: 16px;
   }
 
   .desktop-padding {

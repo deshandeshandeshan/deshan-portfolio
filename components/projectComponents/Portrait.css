@@ -1,18 +1,18 @@
-.landscape-image {
+.portrait-image {
   grid-column: 1 / 7;
   grid-row: 1 / 2;
   cursor: pointer;
 }
 
-.landscape-img {
-  aspect-ratio: 5 / 4;
+.portrait-img {
+  aspect-ratio: 4 / 5;
   width: 100%;
   height: auto;
   object-fit: cover;
 }
 
 @media screen and (min-width: 480px) {
-  .landscape-image {
+  .portrait-image {
     grid-column: 1 / 25;
     grid-row: 1 / 2;
   }
