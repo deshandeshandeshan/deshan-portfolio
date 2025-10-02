@@ -2,8 +2,8 @@ import { SINGLE_PROJECT_QUERYResult } from "@/sanity/types";
 import { DoubleLandscape } from "./projectComponents/DoubleLandscape";
 import { DoublePortrait } from "./projectComponents/DoublePortrait";
 import { Landscape } from "./projectComponents/Landscape";
-import { ProjectDetails } from "./projectComponents/ProjectDetails";
-import { ProjectHeaderImage } from "./projectComponents/ProjectHeaderImage";
+import { FullBleed } from "./projectComponents/FullBleed";
+import { Portrait } from "./projectComponents/Portrait";
 
 type PageBuilderBlock = NonNullable<
   NonNullable<SINGLE_PROJECT_QUERYResult>["content"]
@@ -30,10 +30,10 @@ export function PageBuilder({
             return <DoublePortrait key={block._key} {...block} />;
           case "landscape":
             return <Landscape key={block._key} {...block} />;
-          case "projectDetails":
-            return <ProjectDetails key={block._key} {...block} />;
-          case "projectHeaderImage":
-            return <ProjectHeaderImage key={block._key} {...block} />;
+          case "fullBleed":
+            return <FullBleed key={block._key} {...block} />;
+          case "portrait":
+            return <Portrait key={block._key} {...block} />;
           default: {
             const fallbackBlock = block as { _type: string; _key: string };
             return (

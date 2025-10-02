@@ -67,7 +67,12 @@ export const SINGLE_PROJECT_QUERY = defineQuery(`
       _key,
       _type,
 
-      _type == "projectHeaderImage" => {
+      _type == "fullBleed" => {
+        title,
+        image{ alt, caption, asset->{ _id, url } }
+      },
+
+      _type == "portrait" => {
         title,
         image{ alt, caption, asset->{ _id, url } }
       },
@@ -88,15 +93,6 @@ export const SINGLE_PROJECT_QUERY = defineQuery(`
         leftImage{ alt, caption, asset->{ _id, url } },
         rightImage{ alt, caption, asset->{ _id, url } }
       },
-
-      _type == "projectDetails" => {
-        title,
-        description,
-        year,
-        liveSite{ liveSite, liveSiteTitle },
-        projectDeliverables[]{ deliverable },
-        projectStack[]{ technology }
-      }
     }
   }
 `);

@@ -68,8 +68,8 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type ProjectHeaderImage = {
-  _type: "projectHeaderImage";
+export type Portrait = {
+  _type: "portrait";
   title?: string;
   image?: {
     asset?: {
@@ -87,25 +87,23 @@ export type ProjectHeaderImage = {
   };
 };
 
-export type ProjectDetails = {
-  _type: "projectDetails";
+export type FullBleed = {
+  _type: "fullBleed";
   title?: string;
-  description?: string;
-  year?: string;
-  liveSite?: {
-    liveSite?: string;
-    liveSiteTitle?: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    caption?: string;
+    alt?: string;
+    _type: "image";
   };
-  projectDeliverables?: Array<{
-    deliverable?: string;
-    _type: "deliverables";
-    _key: string;
-  }>;
-  projectStack?: Array<{
-    technology?: string;
-    _type: "stack";
-    _key: string;
-  }>;
 };
 
 export type Landscape = {
@@ -201,9 +199,9 @@ export type PageBuilder = Array<{
   _key: string;
 } & DoubleLandscape | {
   _key: string;
-} & ProjectDetails | {
+} & FullBleed | {
   _key: string;
-} & ProjectHeaderImage>;
+} & Portrait>;
 
 export type Work = {
   _id: string;
@@ -448,7 +446,7 @@ export type MuxTrack = {
   max_height?: number;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | ProjectHeaderImage | ProjectDetails | Landscape | DoubleLandscape | DoublePortrait | PageBuilder | Work | Contact | Project | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug | MuxVideo | MuxVideoAsset | MuxAssetData | MuxStaticRenditions | MuxStaticRenditionFile | MuxPlaybackId | MuxTrack;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Portrait | FullBleed | Landscape | DoubleLandscape | DoublePortrait | PageBuilder | Work | Contact | Project | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug | MuxVideo | MuxVideoAsset | MuxAssetData | MuxStaticRenditions | MuxStaticRenditionFile | MuxPlaybackId | MuxTrack;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity/lib/queries.ts
 // Variable: PROJECTS_QUERY
@@ -488,7 +486,7 @@ export type PROJECTS_QUERYResult = Array<{
   }> | null;
 }>;
 // Variable: SINGLE_PROJECT_QUERY
-// Query: *[_type == "project" && slug.current == $slug][0] {    _id,    _createdAt,    name,    year,    description,    video {      asset-> {        playbackId,        assetId,        filename      }    },    liveSite {      liveSite,      liveSiteTitle    },    projectDeliverables[] {      _key,      deliverable    },    projectStack[] {      _key,      technology    },    content[]{      _key,      _type,      _type == "projectHeaderImage" => {        title,        image{ alt, caption, asset->{ _id, url } }      },      _type == "landscape" => {        title,        image{ alt, caption, asset->{ _id, url } }      },      _type == "doubleLandscape" => {        title,        leftImage{ alt, caption, asset->{ _id, url } },        rightImage{ alt, caption, asset->{ _id, url } }      },      _type == "doublePortrait" => {        title,        leftImage{ alt, caption, asset->{ _id, url } },        rightImage{ alt, caption, asset->{ _id, url } }      },      _type == "projectDetails" => {        title,        description,        year,        liveSite{ liveSite, liveSiteTitle },        projectDeliverables[]{ deliverable },        projectStack[]{ technology }      }    }  }
+// Query: *[_type == "project" && slug.current == $slug][0] {    _id,    _createdAt,    name,    year,    description,    video {      asset-> {        playbackId,        assetId,        filename      }    },    liveSite {      liveSite,      liveSiteTitle    },    projectDeliverables[] {      _key,      deliverable    },    projectStack[] {      _key,      technology    },    content[]{      _key,      _type,      _type == "fullBleed" => {        title,        image{ alt, caption, asset->{ _id, url } }      },      _type == "portrait" => {        title,        image{ alt, caption, asset->{ _id, url } }      },      _type == "landscape" => {        title,        image{ alt, caption, asset->{ _id, url } }      },      _type == "doubleLandscape" => {        title,        leftImage{ alt, caption, asset->{ _id, url } },        rightImage{ alt, caption, asset->{ _id, url } }      },      _type == "doublePortrait" => {        title,        leftImage{ alt, caption, asset->{ _id, url } },        rightImage{ alt, caption, asset->{ _id, url } }      },    }  }
 export type SINGLE_PROJECT_QUERYResult = {
   _id: string;
   _createdAt: string;
@@ -556,6 +554,18 @@ export type SINGLE_PROJECT_QUERYResult = {
     } | null;
   } | {
     _key: string;
+    _type: "fullBleed";
+    title: string | null;
+    image: {
+      alt: string | null;
+      caption: string | null;
+      asset: {
+        _id: string;
+        url: string | null;
+      } | null;
+    } | null;
+  } | {
+    _key: string;
     _type: "landscape";
     title: string | null;
     image: {
@@ -568,23 +578,7 @@ export type SINGLE_PROJECT_QUERYResult = {
     } | null;
   } | {
     _key: string;
-    _type: "projectDetails";
-    title: string | null;
-    description: string | null;
-    year: string | null;
-    liveSite: {
-      liveSite: string | null;
-      liveSiteTitle: string | null;
-    } | null;
-    projectDeliverables: Array<{
-      deliverable: string | null;
-    }> | null;
-    projectStack: Array<{
-      technology: string | null;
-    }> | null;
-  } | {
-    _key: string;
-    _type: "projectHeaderImage";
+    _type: "portrait";
     title: string | null;
     image: {
       alt: string | null;
@@ -647,7 +641,7 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "\n  *[_type == \"project\"]{\n    _id,\n    _createdAt,\n    name,\n    year,\n    description,\n    \"slug\": slug.current,\n    video {\n      asset-> {\n        playbackId,\n        assetId,\n        filename\n      }\n    },\n    projectImage {\n      alt,\n      asset->{\n        _id,\n        url\n      }\n    },\n    liveSite {\n      liveSite,\n      liveSiteTitle\n    },\n    projectDeliverables[] {\n      _key,\n      deliverable\n    },\n    projectStack[] {\n      _key,\n      technology\n    }\n  }\n": PROJECTS_QUERYResult;
-    "\n  *[_type == \"project\" && slug.current == $slug][0] {\n    _id,\n    _createdAt,\n    name,\n    year,\n    description,\n    video {\n      asset-> {\n        playbackId,\n        assetId,\n        filename\n      }\n    },\n    liveSite {\n      liveSite,\n      liveSiteTitle\n    },\n    projectDeliverables[] {\n      _key,\n      deliverable\n    },\n    projectStack[] {\n      _key,\n      technology\n    },\n    content[]{\n      _key,\n      _type,\n\n      _type == \"projectHeaderImage\" => {\n        title,\n        image{ alt, caption, asset->{ _id, url } }\n      },\n\n      _type == \"landscape\" => {\n        title,\n        image{ alt, caption, asset->{ _id, url } }\n      },\n\n      _type == \"doubleLandscape\" => {\n        title,\n        leftImage{ alt, caption, asset->{ _id, url } },\n        rightImage{ alt, caption, asset->{ _id, url } }\n      },\n\n      _type == \"doublePortrait\" => {\n        title,\n        leftImage{ alt, caption, asset->{ _id, url } },\n        rightImage{ alt, caption, asset->{ _id, url } }\n      },\n\n      _type == \"projectDetails\" => {\n        title,\n        description,\n        year,\n        liveSite{ liveSite, liveSiteTitle },\n        projectDeliverables[]{ deliverable },\n        projectStack[]{ technology }\n      }\n    }\n  }\n": SINGLE_PROJECT_QUERYResult;
+    "\n  *[_type == \"project\" && slug.current == $slug][0] {\n    _id,\n    _createdAt,\n    name,\n    year,\n    description,\n    video {\n      asset-> {\n        playbackId,\n        assetId,\n        filename\n      }\n    },\n    liveSite {\n      liveSite,\n      liveSiteTitle\n    },\n    projectDeliverables[] {\n      _key,\n      deliverable\n    },\n    projectStack[] {\n      _key,\n      technology\n    },\n    content[]{\n      _key,\n      _type,\n\n      _type == \"fullBleed\" => {\n        title,\n        image{ alt, caption, asset->{ _id, url } }\n      },\n\n      _type == \"portrait\" => {\n        title,\n        image{ alt, caption, asset->{ _id, url } }\n      },\n\n      _type == \"landscape\" => {\n        title,\n        image{ alt, caption, asset->{ _id, url } }\n      },\n\n      _type == \"doubleLandscape\" => {\n        title,\n        leftImage{ alt, caption, asset->{ _id, url } },\n        rightImage{ alt, caption, asset->{ _id, url } }\n      },\n\n      _type == \"doublePortrait\" => {\n        title,\n        leftImage{ alt, caption, asset->{ _id, url } },\n        rightImage{ alt, caption, asset->{ _id, url } }\n      },\n    }\n  }\n": SINGLE_PROJECT_QUERYResult;
     "\n  *[_type == \"work\"][0]{\n    _id,\n    _createdAt,\n    title,\n    description,\n    video {\n      asset-> {\n        playbackId,\n        assetId,\n        filename\n      }\n    },\n    image {\n      alt,\n      asset->{\n        _id,\n        url\n      }\n    }\n  }\n": WORK_QUERYResult;
     "\n  *[_type == \"contact\"][0]{\n    _id,\n    _createdAt,\n    description,\n    contactImage {\n      alt,\n      asset->{\n        _id,\n        url\n      }\n    },\n    contacts {\n      email,\n      phoneNumber\n    },\n    socialLinks[] {\n      _key,\n      linkName,\n      link\n    }\n  }\n": CONTACT_QUERYResult;
   }

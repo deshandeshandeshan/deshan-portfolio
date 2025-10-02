@@ -326,7 +326,7 @@
     }
   },
   {
-    "name": "projectHeaderImage",
+    "name": "portrait",
     "type": "type",
     "value": {
       "type": "object",
@@ -335,7 +335,7 @@
           "type": "objectAttribute",
           "value": {
             "type": "string",
-            "value": "projectHeaderImage"
+            "value": "portrait"
           }
         },
         "title": {
@@ -432,7 +432,7 @@
     }
   },
   {
-    "name": "projectDetails",
+    "name": "fullBleed",
     "type": "type",
     "value": {
       "type": "object",
@@ -441,7 +441,7 @@
           "type": "objectAttribute",
           "value": {
             "type": "string",
-            "value": "projectDetails"
+            "value": "fullBleed"
           }
         },
         "title": {
@@ -451,111 +451,83 @@
           },
           "optional": true
         },
-        "description": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "year": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "liveSite": {
+        "image": {
           "type": "objectAttribute",
           "value": {
             "type": "object",
             "attributes": {
-              "liveSite": {
+              "asset": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "object",
+                  "attributes": {
+                    "_ref": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    },
+                    "_type": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string",
+                        "value": "reference"
+                      }
+                    },
+                    "_weak": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "boolean"
+                      },
+                      "optional": true
+                    }
+                  },
+                  "dereferencesTo": "sanity.imageAsset"
+                },
+                "optional": true
+              },
+              "media": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "unknown"
+                },
+                "optional": true
+              },
+              "hotspot": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "inline",
+                  "name": "sanity.imageHotspot"
+                },
+                "optional": true
+              },
+              "crop": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "inline",
+                  "name": "sanity.imageCrop"
+                },
+                "optional": true
+              },
+              "caption": {
                 "type": "objectAttribute",
                 "value": {
                   "type": "string"
                 },
                 "optional": true
               },
-              "liveSiteTitle": {
+              "alt": {
                 "type": "objectAttribute",
                 "value": {
                   "type": "string"
                 },
                 "optional": true
-              }
-            }
-          },
-          "optional": true
-        },
-        "projectDeliverables": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "array",
-            "of": {
-              "type": "object",
-              "attributes": {
-                "deliverable": {
-                  "type": "objectAttribute",
-                  "value": {
-                    "type": "string"
-                  },
-                  "optional": true
-                },
-                "_type": {
-                  "type": "objectAttribute",
-                  "value": {
-                    "type": "string",
-                    "value": "deliverables"
-                  }
-                }
               },
-              "rest": {
-                "type": "object",
-                "attributes": {
-                  "_key": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "optional": true
-        },
-        "projectStack": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "array",
-            "of": {
-              "type": "object",
-              "attributes": {
-                "technology": {
-                  "type": "objectAttribute",
-                  "value": {
-                    "type": "string"
-                  },
-                  "optional": true
-                },
-                "_type": {
-                  "type": "objectAttribute",
-                  "value": {
-                    "type": "string",
-                    "value": "stack"
-                  }
-                }
-              },
-              "rest": {
-                "type": "object",
-                "attributes": {
-                  "_key": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    }
-                  }
+              "_type": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string",
+                  "value": "image"
                 }
               }
             }
@@ -1114,7 +1086,7 @@
             },
             "rest": {
               "type": "inline",
-              "name": "projectDetails"
+              "name": "fullBleed"
             }
           },
           {
@@ -1129,7 +1101,7 @@
             },
             "rest": {
               "type": "inline",
-              "name": "projectHeaderImage"
+              "name": "portrait"
             }
           }
         ]

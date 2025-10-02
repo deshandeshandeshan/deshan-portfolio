@@ -1,12 +1,12 @@
 import { doubleLandscape } from "./blocks/doubleLandscape";
 import { doublePortrait } from "./blocks/doublePortrait";
 import { landscape } from "./blocks/landscape";
-import { projectDetails } from "./blocks/projectDetails";
-import { projectHeaderImage } from "./blocks/projectHeaderImage";
+import { fullBleed } from "./blocks/fullBleed";
 import { contact } from "./contact";
 import { pageBuilderType } from "./pageBuilder";
 import { project } from "./schema";
 import { work } from "./work";
+import { portrait } from "./blocks/portrait";
 
 const schemas = [
   project,
@@ -18,8 +18,8 @@ const schemas = [
   doublePortrait,
   doubleLandscape,
   landscape,
-  projectDetails,
-  projectHeaderImage,
+  fullBleed,
+  portrait,
 ];
 
 export default schemas;

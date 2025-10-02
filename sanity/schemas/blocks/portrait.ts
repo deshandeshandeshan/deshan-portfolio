@@ -1,7 +1,7 @@
 import { defineField, defineType } from "sanity";
 
-export const projectHeaderImage = defineType({
-  name: "projectHeaderImage",
+export const portrait = defineType({
+  name: "portrait",
   type: "object",
   fields: [
     defineField({
