@@ -5,7 +5,7 @@ import {
   SINGLE_PROJECT_QUERY,
   WORK_QUERY,
 } from "./lib/queries";
-import { Contact } from "./types";
+import { Contact, SINGLE_PROJECT_QUERYResult } from "./types";
 
 export const client = createClient({
   projectId: "7t1ogy4h",
@@ -25,15 +25,11 @@ export async function getProjects() {
   return client.fetch(PROJECTS_QUERY);
 }
 
-export async function getProject(slug: string) {
-  const client = createClient({
-    projectId: "7t1ogy4h",
-    dataset: "production",
-    apiVersion: "2025-05-21",
-    useCdn: true,
-  });
-
-  return client.fetch(SINGLE_PROJECT_QUERY, { slug });
+export async function getProject(
+  slug: string
+): Promise<SINGLE_PROJECT_QUERYResult | null> {
+  const result = await client.fetch(SINGLE_PROJECT_QUERY, { slug });
+  return (result as SINGLE_PROJECT_QUERYResult) ?? null;
 }
 
 export async function getWork() {

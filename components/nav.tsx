@@ -103,7 +103,7 @@ const Nav = ({ contactInfo }: Props) => {
             </div>
             <div className="contact-details spacing-24">
               <ul>
-                <h3 className="type-body-bold">Contact</h3>
+                <h3 className="type-body-bold text-grey">Contact</h3>
                 <li className="type-body">
                   <a
                     href={`mailto:${contactInfo.contacts?.email}`}
@@ -124,7 +124,7 @@ const Nav = ({ contactInfo }: Props) => {
             </div>
             <div className="social-links">
               <ul>
-                <h3 className="type-body-bold">Socials</h3>
+                <h3 className="type-body-bold text-grey">Socials</h3>
                 {contactInfo.socialLinks?.map((socialLink, index) => (
                   <li key={index} className="type-body">
                     <a href={socialLink.link} target="_blank">

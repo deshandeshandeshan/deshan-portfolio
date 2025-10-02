@@ -58,7 +58,7 @@ type HomeContentProps = {
 export default function HomeContent({ projects }: HomeContentProps) {
   return (
     <div>
-      <ul className="home-projects-list mobile-padding">
+      <ul className="home-projects-list mobile-padding margin-bottom">
         {projects.map((project) => (
           <ProjectCard key={project._id} project={project} />
         ))}
