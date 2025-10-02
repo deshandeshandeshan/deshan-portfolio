@@ -74,7 +74,7 @@ a:hover {
 .page-builder {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 80px;
 }
 
 /* Text Colours */
@@ -145,6 +145,10 @@ a:hover {
 
 .gap-4 {
   margin-right: 4px;
+}
+
+.margin-bottom {
+  margin-bottom: 80px;
 }
 
 /* Mobile Font Sizes */
@@ -219,6 +223,10 @@ a:hover {
     padding-bottom: 120px;
   }
 
+  .margin-bottom {
+    margin-bottom: 120px;
+  }
+
   /* Desktop Font Sizes */
 
   .type-heading {
@@ -256,7 +264,7 @@ a:hover {
   .page-builder {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 120px;
   }
 
   .desktop-padding {

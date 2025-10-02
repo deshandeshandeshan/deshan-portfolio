@@ -41,6 +41,28 @@ export const SINGLE_PROJECT_QUERY = defineQuery(`
   *[_type == "project" && slug.current == $slug][0] {
     _id,
     _createdAt,
+    name,
+    year,
+    description,
+    video {
+      asset-> {
+        playbackId,
+        assetId,
+        filename
+      }
+    },
+    liveSite {
+      liveSite,
+      liveSiteTitle
+    },
+    projectDeliverables[] {
+      _key,
+      deliverable
+    },
+    projectStack[] {
+      _key,
+      technology
+    },
     content[]{
       _key,
       _type,

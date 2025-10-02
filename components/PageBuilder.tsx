@@ -16,12 +16,12 @@ type PageBuilderProps = {
 
 export function PageBuilder({
   content,
-  className = "page-builder desktop-padding",
+  className = "page-builder",
 }: PageBuilderProps) {
   if (!Array.isArray(content)) return null;
 
   return (
-    <main className={className}>
+    <div className={className}>
       {content.map((block) => {
         switch (block._type) {
           case "doubleLandscape":
@@ -44,6 +44,6 @@ export function PageBuilder({
           }
         }
       })}
-    </main>
+    </div>
   );
 }

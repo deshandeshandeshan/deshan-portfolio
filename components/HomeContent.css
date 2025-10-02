@@ -69,6 +69,7 @@
 .landing-content-description {
   grid-column: 1 / 7;
   grid-row: 4 / 5;
+  text-indent: 2rem;
 }
 
 .landing-content-info-container {
@@ -162,9 +163,10 @@
   }
 
   .landing-content-description {
-    grid-column: 13 / 19;
+    grid-column: 14 / 19;
     grid-row: 3 / 4;
     align-self: end;
+    text-indent: 3rem;
   }
 
   .landing-content-info-container {

@@ -1,4 +1,4 @@
-import { PageBuilder } from "@/components/PageBuilder";
+import ProjectLayout from "@/components/ProjectLayout";
 import { getProject } from "@/sanity/sanity-utils";
 import { notFound } from "next/navigation";
 
@@ -17,8 +17,8 @@ export default async function Project({ params }: Props) {
   }
 
   return project?.content ? (
-    <div>
-      <PageBuilder content={project.content} />
-    </div>
+    <main>
+      <ProjectLayout project={project} />
+    </main>
   ) : null;
 }
