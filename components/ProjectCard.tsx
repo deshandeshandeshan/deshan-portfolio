@@ -60,13 +60,21 @@ type Project = {
 export default function ProjectCard({ project }: { project: Project }) {
   const playbackId = project?.video?.asset?.playbackId ?? "";
 
-  const [activeMedia, setActiveMedia] = useState<"video" | "image">("video");
+  const hasVideo = Boolean(project?.video?.asset?.playbackId);
+
+  const [activeMedia, setActiveMedia] = useState<"video" | "image">(
+    hasVideo ? "video" : "image"
+  );
 
   const { ref: inViewRef, inView } = useInView({
     threshold: 0.1,
   });
 
   const playerRef = useRef<MuxPlayerElement | null>(null);
+
+  useEffect(() => {
+    setActiveMedia(hasVideo ? "video" : "image");
+  }, [hasVideo]);
 
   useEffect(() => {
     if (inView && playerRef.current) {
