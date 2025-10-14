@@ -4,8 +4,6 @@ import "./HomeContent.css";
 import "@/app/grid.css";
 import ProjectCard from "./ProjectCard";
 
-export const revalidate = 5;
-
 type Project = {
   _id: string;
   _createdAt: string;

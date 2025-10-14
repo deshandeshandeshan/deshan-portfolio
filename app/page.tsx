@@ -2,6 +2,8 @@ import { getProjects, getWork } from "@/sanity/sanity-utils";
 import HomeContent from "@/components/HomeContent";
 import HeaderContent from "@/components/HeaderMedia";
 
+export const revalidate = 5;
+
 export default async function Home() {
   const projects = await getProjects();
   const work = await getWork();
