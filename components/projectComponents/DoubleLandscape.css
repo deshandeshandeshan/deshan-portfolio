@@ -11,13 +11,13 @@
 }
 
 .left-img {
-  aspect-ratio: 5 / 4;
+  aspect-ratio: 3 / 2;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 .right-img {
-  aspect-ratio: 5 / 4;
+  aspect-ratio: 3 / 2;
   width: 100%;
   height: 100%;
   object-fit: cover;
