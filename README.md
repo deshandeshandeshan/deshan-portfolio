@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Deshan Mclachlan Portfolio Website – Built with Next.js
+
+This is a modern, responsive website built for Deshan Mclachlan, using Next.js 14 with the App Router. The site includes dynamic content rendering, CMS integration, and optimised performance for SEO and speed.
+
+## Tech Stack
+
+- [Next.js 14](https://nextjs.org/)
+- React 18
+- CSS
+- Typescript
+- Sanity CMS
+- Vercel
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repo:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+   ```bash
+   git clone https://github.com/deshandeshandeshan/deshan-portfolio.git
+   cd deshan-portfolio
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. Install Dependencies:
+   npm install
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Run dev server
+   npm run dev
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+This site is deployed via [Vercel](https://vercel.com/). Any changes pushed to the `master` branch are automatically deployed.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To trigger a rebuild manually:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Go to the Vercel dashboard
+- Click "Deployments"
+- Select "Redeploy"
 
-## Deploy on Vercel
+## CMS (Sanity)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The content is managed via [Sanity Studio](https://www.sanity.io/).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Admin URL: [https://www.sonnastudios.com/admin](https://www.sonnastudios.com/)
+- Log in with your credentials
+- Navigate pages via the Page Builder
+
+## License
+
+This project is for the exclusive use of Deshan Mclachlan. Not open for public distribution or reuse without permission.
