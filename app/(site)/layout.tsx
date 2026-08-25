@@ -1,18 +1,12 @@
 import type { Metadata } from "next";
 import NavContent from "@/components/navContent";
 import Footer from "@/components/footer";
+<<<<<<< HEAD:app/(site)/layout.tsx
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+=======
+import "./globals.css";
+>>>>>>> 021eb7b35c382e79edc73c742015921925ca19c1:app/layout.tsx
 
 export const metadata: Metadata = {
   title: "DESHAN MCLACHLAN",
@@ -26,7 +20,7 @@ export default function SiteLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className="">
         <NavContent />
         {children}
         <Footer />

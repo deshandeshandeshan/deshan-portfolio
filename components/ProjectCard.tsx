@@ -10,8 +10,6 @@ import { useInView } from "react-intersection-observer";
 import MuxPlayerElement from "@mux/mux-player";
 import MuxPlayer from "@mux/mux-player-react";
 
-export const revalidate = 5;
-
 type Project = {
   _id: string;
   _createdAt: string;
