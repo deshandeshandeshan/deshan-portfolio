@@ -16,9 +16,12 @@ import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { Contact } from "@/sanity/types";
 
+const NAV_ANIMATION_DURATION = 1.2;
+
 const Nav = ({ contactInfo }: Props) => {
   const container = useRef<HTMLDivElement | null>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [dividerVisible, setDividerVisible] = useState(false);
 
   const tl = useRef<gsap.core.Timeline | null>(null);
 
@@ -32,11 +35,25 @@ const Nav = ({ contactInfo }: Props) => {
         .timeline({
           paused: true,
         })
-        .to(".nav-overlay", {
-          duration: 1.2,
-          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-          ease: "power4.inOut",
-        });
+        .to(
+          ".nav-overlay",
+          {
+            duration: NAV_ANIMATION_DURATION,
+            clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+            ease: "power4.inOut",
+          },
+          0
+        )
+        .fromTo(
+          ".nav-overlay-divider",
+          { top: "0vh" },
+          {
+            top: "100vh",
+            duration: NAV_ANIMATION_DURATION,
+            ease: "power4.inOut",
+          },
+          0
+        );
     },
     { scope: container }
   );
@@ -45,9 +62,15 @@ const Nav = ({ contactInfo }: Props) => {
     if (!tl.current) return;
 
     if (isOpen) {
+      setDividerVisible(true);
       tl.current.play();
     } else {
       tl.current.reverse();
+      const timeoutId = window.setTimeout(() => {
+        setDividerVisible(false);
+      }, NAV_ANIMATION_DURATION * 1000);
+
+      return () => window.clearTimeout(timeoutId);
     }
   }, [isOpen]);
 
@@ -137,6 +160,10 @@ const Nav = ({ contactInfo }: Props) => {
           </div>
         </div>
       </div>
+      <div
+        className="nav-overlay-divider"
+        style={{ visibility: dividerVisible ? "visible" : "hidden" }}
+      />
     </nav>
   );
 };

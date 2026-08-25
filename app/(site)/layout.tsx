@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import NavContent from "@/components/navContent";
 import Footer from "@/components/footer";
-import "./globals.css";
+import "../globals.css";
 
 export const metadata: Metadata = {
   title: "DESHAN MCLACHLAN",
   description: "Web developer and designer based in Melbourne, Australia.",
 };
 
-export default function RootLayout({
+export default function SiteLayout({
   children,
 }: {
   children: React.ReactNode;
