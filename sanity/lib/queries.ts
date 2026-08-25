@@ -1,7 +1,7 @@
 import { defineQuery } from "next-sanity";
 
 export const PROJECTS_QUERY = defineQuery(`
-  *[_type == "project"]{
+  *[_type == "project"] | order(year desc){
     _id,
     _createdAt,
     name,
@@ -83,6 +83,17 @@ export const SINGLE_PROJECT_QUERY = defineQuery(`
       },
 
       _type == "doubleLandscape" => {
+        title,
+        leftImage{ alt, caption, asset->{ _id, url } },
+        rightImage{ alt, caption, asset->{ _id, url } }
+      },
+
+      _type == "singleSquare" => {
+        title,
+        image{ alt, caption, asset->{ _id, url } }
+      },
+
+      _type == "doubleSquare" => {
         title,
         leftImage{ alt, caption, asset->{ _id, url } },
         rightImage{ alt, caption, asset->{ _id, url } }

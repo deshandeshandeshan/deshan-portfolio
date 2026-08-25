@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import NavContent from "@/components/navContent";
 import Footer from "@/components/footer";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   description: "Web developer and designer based in Melbourne, Australia.",
 };
 
-export default function RootLayout({
+export default function SiteLayout({
   children,
 }: {
   children: React.ReactNode;

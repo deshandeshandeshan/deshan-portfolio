@@ -1,7 +1,9 @@
 import { SINGLE_PROJECT_QUERYResult } from "@/sanity/types";
 import { DoubleLandscape } from "./projectComponents/DoubleLandscape";
 import { DoublePortrait } from "./projectComponents/DoublePortrait";
+import { DoubleSquare } from "./projectComponents/DoubleSquare";
 import { Landscape } from "./projectComponents/Landscape";
+import { SingleSquare } from "./projectComponents/SingleSquare";
 import { FullBleed } from "./projectComponents/FullBleed";
 import { Portrait } from "./projectComponents/Portrait";
 
@@ -30,6 +32,10 @@ export function PageBuilder({
             return <DoublePortrait key={block._key} {...block} />;
           case "landscape":
             return <Landscape key={block._key} {...block} />;
+          case "singleSquare":
+            return <SingleSquare key={block._key} {...block} />;
+          case "doubleSquare":
+            return <DoubleSquare key={block._key} {...block} />;
           case "fullBleed":
             return <FullBleed key={block._key} {...block} />;
           case "portrait":
