@@ -97,7 +97,7 @@ export default function HeaderContent({ work }: HeaderMediaProps) {
         ) : null}
       </div>
       <div className="landing-content-info-container">
-        <h3 className="info-years-working type-heading">2022 - 2025</h3>
+        <h3 className="info-years-working type-heading">2023 - 2026</h3>
         <h3 className="info-projects type-heading">PROJECTS &#8600;</h3>
       </div>
     </div>
